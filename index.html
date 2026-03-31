@@ -1480,6 +1480,10 @@
   </footer>
 
   <script>
+    // Always start at top on load/refresh — prevent browser restoring scroll to a hash
+    if (history.scrollRestoration) history.scrollRestoration = 'manual';
+    window.addEventListener('load', () => { window.scrollTo(0, 0); });
+
     // Scroll progress bar
     const scrollLine = document.getElementById('scrollLine');
     window.addEventListener('scroll', () => {
