@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krish Jani — Cybersecurity</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f9f9f7;
+      --surface: #ffffff;
+      --border: #e5e4e0;
+      --text: #1a1a1a;
+      --text-muted: #6b6b6b;
+      --text-dim: #9e9e9e;
+      --accent: #2563eb;
+      --accent-bg: #eff6ff;
+      --accent-text: #1d4ed8;
+      --green-bg: #f0fdf4;
+      --green-text: #166534;
+      --purple-bg: #faf5ff;
+      --purple-text: #7e22ce;
+      --radius: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 60px;
+      height: 60px;
+      background: rgba(249,249,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.3px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* SECTIONS */
+    section { padding: 80px 0; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* HERO */
+    #hero {
+      padding: 140px 0 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--accent-text);
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+    }
+    .hero-text h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+    .hero-text .role {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .hero-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .tag-blue { background: var(--accent-bg); color: var(--accent-text); }
+    .tag-green { background: var(--green-bg); color: var(--green-text); }
+    .tag-purple { background: var(--purple-bg); color: var(--purple-text); }
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn:hover { border-color: #aaa; color: var(--text); }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+
+    /* SECTION HEADING */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 32px;
+    }
+
+    /* ABOUT */
+    #about { border-bottom: 1px solid var(--border); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .about-grid p { color: var(--text-muted); font-size: 15px; margin-bottom: 16px; }
+
+    /* PROJECTS */
+    #projects { border-bottom: 1px solid var(--border); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card:hover {
+      border-color: #bbb;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .project-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .project-link-icon {
+      color: var(--text-dim);
+      font-size: 14px;
+    }
+    .project-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .project-card-footer {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .tech-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* SKILLS */
+    #skills { border-bottom: 1px solid var(--border); }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .skill-item { margin-bottom: 4px; }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .skill-name { font-size: 14px; font-weight: 500; }
+    .skill-pct { font-size: 13px; color: var(--text-muted); }
+    .skill-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: width 1s ease;
+    }
+
+    /* EXPERIENCE */
+    #experience { border-bottom: 1px solid var(--border); }
+    .exp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    .exp-col-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 20px;
+    }
+    .exp-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .exp-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 7px;
+      flex-shrink: 0;
+    }
+    .exp-year {
+      font-size: 11px;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 2px;
+    }
+    .exp-role {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .exp-place {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* CONTACT */
+    #contact { padding: 80px 0; }
+    .contact-inner {
+      max-width: 480px;
+    }
+    .contact-inner p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p { font-size: 13px; color: var(--text-dim); }
+
+    @media (max-width: 700px) {
+      nav { padding: 0 24px; }
+      .container { padding: 0 24px; }
+      .hero-inner { flex-direction: column; gap: 24px; }
+      .about-grid, .projects-grid, .skills-grid, .exp-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">Krish Jani</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="avatar">KJ</div>
+        <div class="hero-text">
+          <h1>Krish Jani</h1>
+          <p class="role">Cybersecurity Graduate · Available for work</p>
+          <p>Focused on network security, ethical hacking, and building tools that expose vulnerabilities before attackers do. Currently seeking opportunities in penetration testing and security analysis.</p>
+          <div class="hero-tags">
+            <span class="tag tag-blue">Penetration Testing</span>
+            <span class="tag tag-blue">Network Security</span>
+            <span class="tag tag-green">CTF Player</span>
+            <span class="tag tag-green">OSCP (in progress)</span>
+            <span class="tag tag-purple">Python</span>
+            <span class="tag tag-purple">Linux</span>
+          </div>
+          <div class="hero-links">
+            <a href="#" class="btn btn-primary">Download Resume</a>
+            <a href="#" class="btn">GitHub</a>
+            <a href="#" class="btn">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">About me</h2>
+      <div class="about-grid">
+        <div>
+          <p>I'm a cybersecurity graduate with a passion for offensive security and understanding how systems break. I spend my free time on platforms like HackTheBox and TryHackMe, chasing flags and documenting what I learn.</p>
+          <p>My goal is to work as a penetration tester — finding vulnerabilities in systems before malicious actors do, and helping organisations build more resilient defences.</p>
+        </div>
+        <div>
+          <p>Outside of security, I'm interested in scripting and automation — building small Python tools that make repetitive security tasks faster. I believe good security work is equal parts curiosity and discipline.</p>
+          <p>I'm currently working toward my OSCP certification and actively looking for junior security roles or internships.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <a href="#" class="project-card">
+          <div class="project-card-header">
+            <h3>Network Port Scanner</h3>
+            <span class="project-link-icon">↗</span>
+          </div>
+          <p>A Python-based scanner that identifies open ports and running services on a target host. Wraps Nmap with a cleaner CLI and outputs structured JSON reports.</p>
+          <div class="project-card-footer">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Nmap</span>
+            <span class="tech-tag">Socket</span>
+          </div>
+        </a>
+
+        <a href="#" class="project-card">
+          <div class="project-card-header">
+            <h3>Phishing URL Detector</h3>
+            <span class="project-link-icon">↗</span>
+          </div>
+          <p>Machine learning model trained on a dataset of 50k URLs to classify phishing vs legitimate sites. Exposed as a lightweight Flask API.</p>
+          <div class="project-card-footer">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">scikit-learn</span>
+            <span class="tech-tag">Flask</span>
+          </div>
+        </a>
+
+        <a href="#" class="project-card">
+          <div class="project-card-header">
+            <h3>CTF Write-ups</h3>
+            <span class="project-link-icon">↗</span>
+          </div>
+          <p>Documented solutions for 20+ HackTheBox and TryHackMe challenges, covering web exploitation, binary exploitation, and forensics.</p>
+          <div class="project-card-footer">
+            <span class="tech-tag">HackTheBox</span>
+            <span class="tech-tag">TryHackMe</span>
+            <span class="tech-tag">Burp Suite</span>
+          </div>
+        </a>
+
+        <a href="#" class="project-card">
+          <div class="project-card-header">
+            <h3>Password Strength Auditor</h3>
+            <span class="project-link-icon">↗</span>
+          </div>
+          <p>CLI tool that audits password lists against common attack vectors — dictionary attacks, pattern matching, and entropy scoring — to identify weak credentials.</p>
+          <div class="project-card-footer">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Hashlib</span>
+            <span class="tech-tag">Wordlists</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid">
+
+        <div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Network Security</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Penetration Testing</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Linux (Kali / Debian)</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Burp Suite</span><span class="skill-pct">65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Nmap / Wireshark</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">OSINT</span><span class="skill-pct">60%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:60%"></div></div>
+          </div>
+          <br>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Web App Security</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Background</p>
+      <h2 class="section-title">Experience & Education</h2>
+      <div class="exp-grid">
+
+        <div>
+          <p class="exp-col-title">Work</p>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <p class="exp-year">2024</p>
+              <p class="exp-role">Security Analyst Intern</p>
+              <p class="exp-place">Company Name · City</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot" style="background: var(--border)"></div>
+            <div>
+              <p class="exp-year">2023</p>
+              <p class="exp-role">IT Support Technician</p>
+              <p class="exp-place">Company Name · City</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p class="exp-col-title">Education & Certs</p>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div>
+              <p class="exp-year">2022 – 2025</p>
+              <p class="exp-role">BSc Cybersecurity</p>
+              <p class="exp-place">University Name</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot" style="background: var(--border)"></div>
+            <div>
+              <p class="exp-year">In Progress</p>
+              <p class="exp-role">OSCP Certification</p>
+              <p class="exp-place">Offensive Security</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot" style="background: var(--border)"></div>
+            <div>
+              <p class="exp-year">2024</p>
+              <p class="exp-role">CompTIA Security+</p>
+              <p class="exp-place">CompTIA</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label">Get in touch</p>
+        <h2 class="section-title">Let's talk</h2>
+        <p>I'm currently open to junior security roles and internships. Whether you have a question or just want to connect — feel free to reach out.</p>
+        <div class="contact-links">
+          <a href="mailto:krishjani111203@gmail.com" class="btn btn-primary">Send an email</a>
+          <a href="#" class="btn">LinkedIn</a>
+          <a href="#" class="btn">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Krish Jani · Cybersecurity Graduate</p>
+    <p>© 2025</p>
+  </footer>
+
+</body>
+</html>

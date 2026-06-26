@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krish Jani | Cybersecurity Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #13171f;
+      --bg-alt:       #0f1319;
+      --bg-card:      #1b2030;
+      --text:         #c8d4e0;
+      --text-muted:   #5e7080;
+      --text-faint:   #2e3f52;
+      --accent:       #00a878;
+      --accent-deep:  #00c990;
+      --accent-pale:  rgba(0,168,120,0.12);
+      --accent-glow:  rgba(0,168,120,0.18);
+      --blue:         #4da6ff;
+      --blue-pale:    rgba(77,166,255,0.12);
+      --warn:         #f59e0b;
+      --warn-pale:    rgba(245,158,11,0.12);
+      --danger:       #f87171;
+      --border:       rgba(255,255,255,0.07);
+      --border-accent:rgba(0,168,120,0.28);
+      --shadow:       0 2px 18px rgba(0,0,0,0.35);
+      --shadow-hover: 0 8px 32px rgba(0,0,0,0.5);
+      --term-bg:      #0d1117;
+      --term-border:  rgba(0,168,120,0.3);
+      --term-green:   #3ddc97;
+      --term-warn:    #ffd166;
+      --term-blue:    #79c0ff;
+      --term-dim:     #484f58;
+      --term-muted:   #8b949e;
+      --ff-display:   'Bebas Neue', Impact, sans-serif;
+      --ff-mono:      'JetBrains Mono', monospace;
+      --ff-body:      'Outfit', system-ui, sans-serif;
+      --radius:       10px;
+      --ease:         cubic-bezier(0.4,0,0.2,1);
+      --max:          1160px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-alt); }
+    ::-webkit-scrollbar-thumb { background: rgba(0,168,120,0.4); border-radius: 3px; }
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ── GRID / PAPER BACKGROUND ── */
+    .paper-bg {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(0,168,120,0.14) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,168,120,0.14) 1px, transparent 1px),
+        linear-gradient(rgba(0,168,120,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,168,120,0.055) 1px, transparent 1px);
+      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+      background-color: var(--bg);
+    }
+    .paper-bg::after {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 70% 20%, rgba(0,168,120,0.07) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(77,166,255,0.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    .progress-bar {
+      position: fixed; top: 0; left: 0; height: 2px; z-index: 300;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+      transition: width 0.1s;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 26px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.3s var(--ease), padding 0.3s var(--ease), box-shadow 0.3s;
+    }
+    .nav.scrolled {
+      background: rgba(15,19,25,0.97);
+      backdrop-filter: blur(18px);
+      padding: 18px 60px;
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav__logo {
+      font-family: var(--ff-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .nav__logo .dot { color: var(--accent); }
+
+    .nav__links { display: flex; gap: 40px; list-style: none; }
+    .nav__links a {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 0.25s var(--ease);
+    }
+    .nav__links a:hover { color: var(--text); }
+    .nav__links a:hover::after, .nav__links a.active::after { width: 100%; }
+    .nav__links a.active { color: var(--text); }
+
+    .nav__cta {
+      font-family: var(--ff-mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      border-radius: 7px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav__cta:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+    /* Hamburger */
+    .nav__hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav__mobile {
+      display: none; position: fixed; inset: 0; z-index: 190;
+      background: var(--bg);
+      flex-direction: column; align-items: center; justify-content: center; gap: 30px;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      font-family: var(--ff-display);
+      font-size: 2.8rem; letter-spacing: 0.06em;
+      color: var(--text); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav__mobile a:hover { color: var(--accent); }
+
+    /* ── WRAPPER ── */
+    .wrap { position: relative; z-index: 1; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 52px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 120px 0 80px;
+      position: relative;
+    }
+
+    /* NOC status bar */
+    .noc-bar {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-faint);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .noc-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(0,168,120,0.5); }
+      70%  { box-shadow: 0 0 0 7px rgba(0,168,120,0); }
+      100% { box-shadow: 0 0 0 0 rgba(0,168,120,0); }
+    }
+    .noc-live { color: var(--accent); font-weight: 700; }
+    .noc-sep  { color: var(--border); }
+
+    /* Hero name */
+    .hero__name {
+      font-family: var(--ff-display);
+      font-size: clamp(4.8rem, 11vw, 10.5rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      margin-bottom: 10px;
+    }
+    .hero__name .solid { display: block; color: var(--text); }
+    .hero__name .outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 2.5px var(--text);
+    }
+
+    .hero__role {
+      font-family: var(--ff-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+      margin-top: 16px;
+    }
+
+    .hero__sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin-bottom: 26px;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    /* cert pills */
+    .cert-pills {
+      display: flex; flex-wrap: wrap; gap: 9px;
+      margin-bottom: 30px;
+    }
+    .cert-pill {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.07em;
+      padding: 5px 12px;
+      border-radius: 5px;
+      background: var(--accent-pale);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-deep);
+    }
+
+    /* buttons */
+    .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 13px 26px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: transform 0.25s var(--ease), background 0.25s, box-shadow 0.25s;
+      border: none; cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--filled {
+      background: var(--text); color: #fff;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+    .btn--filled:hover { box-shadow: 0 6px 22px rgba(0,0,0,0.28); }
+    .btn--accent {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .btn--accent:hover { background: var(--accent-deep); }
+    .btn--outline {
+      background: transparent; color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn--outline:hover { border-color: var(--text); }
+
+    /* socials */
+    .hero__socials {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--ff-mono); font-size: 0.68rem;
+      color: var(--text-faint); margin-top: 22px; flex-wrap: wrap;
+    }
+    .hero__socials a {
+      display: flex; align-items: center; gap: 5px;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero__socials a:hover { color: var(--accent); }
+    .hero__socials .sep { color: var(--border); }
+
+    /* ── TERMINAL WIDGET ── */
+    .hero-terminal {
+      position: absolute;
+      right: 52px; top: 50%;
+      transform: translateY(-50%);
+      width: 370px;
+      background: var(--term-bg);
+      border: 1px solid var(--term-border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: var(--ff-mono);
+      z-index: 2;
+      box-shadow:
+        0 0 0 1px rgba(0,168,120,0.1),
+        0 20px 60px rgba(0,0,0,0.3),
+        0 0 40px rgba(0,168,120,0.06);
+    }
+
+    .term-bar {
+      background: #161b22;
+      border-bottom: 1px solid rgba(0,168,120,0.15);
+      padding: 11px 16px;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .term-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .term-title {
+      font-size: 0.67rem;
+      color: var(--term-dim);
+      margin-left: 6px;
+      letter-spacing: 0.08em;
+    }
+
+    .term-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 7px; }
+
+    .term-line {
+      font-size: 0.72rem;
+      line-height: 1.5;
+      color: var(--term-muted);
+    }
+    .term-line.t-out  { color: var(--term-dim); padding-left: 12px; }
+    .term-line.t-ok   { color: var(--term-green); padding-left: 12px; }
+    .term-line.t-warn { color: var(--term-warn);  padding-left: 12px; }
+    .term-line.t-info { color: var(--term-blue);  padding-left: 12px; }
+    .term-section {
+      border-top: 1px solid rgba(0,168,120,0.1);
+      padding-top: 10px; margin-top: 4px;
+    }
+
+    .term-prompt { color: var(--term-green); margin-right: 7px; font-weight: 700; }
+    .term-host   { color: var(--term-blue); }
+
+    .term-cursor {
+      display: inline-block;
+      width: 7px; height: 13px;
+      background: var(--term-green);
+      vertical-align: middle;
+      margin-left: 1px;
+      animation: blink 1.1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    @media (max-width: 960px) { .hero-terminal { display: none; } }
+    @media (min-width: 961px) { .hero .container { padding-right: 450px; } }
+
+    /* ── SECTIONS ── */
+    .section { padding: 100px 0; position: relative; }
+    .section--alt { background: rgba(0,0,0,0.25); }
+
+    .section__label {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--ff-mono); font-size: 0.68rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section__label::before {
+      content: '[//]';
+      color: var(--text-faint); font-size: 0.6rem;
+    }
+
+    .section__title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1; letter-spacing: 0.04em;
+      color: var(--text); margin-bottom: 54px;
+    }
+    .section__title em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1.8px var(--text);
+    }
+
+    /* ── ABOUT ── */
+    .about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about__text p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.97rem; }
+    .about__text p strong { color: var(--text); font-weight: 600; }
+    .about__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 28px; }
+    .stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      border-left: 3px solid var(--accent);
+    }
+    .stat__num { font-family: var(--ff-display); font-size: 2.5rem; color: var(--accent); line-height: 1; }
+    .stat__label { font-family: var(--ff-mono); font-size: 0.66rem; color: var(--text-faint); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* about side cards */
+    .about-info-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 22px;
+      box-shadow: var(--shadow); margin-top: 14px;
+    }
+    .info-row { display: flex; flex-direction: column; gap: 6px; }
+    .info-label { font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+    .info-val { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+
+    .avail-card {
+      background: var(--bg-card); border: 1px solid var(--border-accent);
+      border-radius: var(--radius); padding: 16px 20px;
+      box-shadow: var(--shadow); margin-top: 14px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .avail-dot {
+      width: 8px; height: 8px; min-width: 8px;
+      border-radius: 50%; background: var(--accent);
+      margin-top: 5px;
+      animation: pulse 2s infinite;
+    }
+    .avail-card > div { display: flex; flex-direction: column; gap: 4px; }
+    .avail-status { font-family: var(--ff-mono); font-size: 0.72rem; color: var(--accent); font-weight: 600; letter-spacing: 0.06em; }
+    .avail-detail { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* tools ticker */
+    .tools-strip {
+      margin-top: 24px;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 11px 0;
+    }
+    .tools-ticker { display: flex; gap: 30px; animation: ticker 22s linear infinite; width: max-content; }
+    .tools-ticker span { font-family: var(--ff-mono); font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-faint); white-space: nowrap; }
+    .tools-ticker span::before { content: '◆  '; color: rgba(0,168,120,0.45); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* edu card */
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+    }
+    .edu-card h3 { font-family: var(--ff-display); font-size: 1.4rem; letter-spacing: 0.04em; margin-bottom: 5px; }
+    .edu-card .degree { font-size: 0.87rem; color: var(--text-muted); margin-bottom: 10px; }
+    .edu-card .date { font-family: var(--ff-mono); font-size: 0.68rem; color: var(--text-faint); letter-spacing: 0.08em; }
+
+    /* ── SKILLS ── */
+    .skills__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s, border-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+      border-top: 2.5px solid transparent;
+    }
+    .skill-card.visible { opacity: 1; transform: none; }
+    .skill-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-top-color: var(--accent); }
+    .skill-card__num { font-family: var(--ff-mono); font-size: 0.6rem; color: var(--accent); letter-spacing: 0.18em; margin-bottom: 12px; }
+    .skill-card h3 { font-family: var(--ff-display); font-size: 1.45rem; letter-spacing: 0.04em; margin-bottom: 14px; line-height: 1.1; }
+    .skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .skill-card li { font-size: 0.84rem; color: var(--text-muted); padding-left: 16px; position: relative; }
+    .skill-card li::before { content: '→'; position: absolute; left: 0; color: var(--accent); font-size: 0.7rem; }
+
+    /* ── PROJECTS ── */
+    .proj__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .proj-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s, border-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .proj-card.visible { opacity: 1; transform: none; }
+    .proj-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: var(--border-accent); }
+    .proj-card--big { grid-column: span 2; }
+
+    .proj-card__top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .proj-card__badge {
+      font-family: var(--ff-mono); font-size: 0.6rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--accent-deep);
+      background: var(--accent-pale);
+      border: 1px solid var(--border-accent);
+      padding: 3px 9px; border-radius: 4px;
+    }
+    .proj-card__icon { font-size: 1.5rem; }
+    .proj-card h3 { font-family: var(--ff-display); font-size: 1.6rem; letter-spacing: 0.04em; line-height: 1; }
+    .proj-card p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .ptag {
+      font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 10px; border-radius: 4px;
+      background: var(--accent-pale);
+      border: 1px solid var(--border-accent);
+      color: var(--accent-deep);
+    }
+
+    /* ── THREAT STATUS STRIP (decorative) ── */
+    .threat-strip {
+      display: flex; align-items: stretch; gap: 0;
+      margin-bottom: 54px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .threat-item {
+      flex: 1; padding: 14px 20px;
+      background: var(--bg-card);
+      display: flex; flex-direction: column; gap: 4px;
+      border-right: 1px solid var(--border);
+    }
+    .threat-item:last-child { border-right: none; }
+    .threat-item__label {
+      font-family: var(--ff-mono); font-size: 0.6rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-faint);
+    }
+    .threat-item__val {
+      font-family: var(--ff-mono); font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.04em;
+    }
+    .t-green { color: var(--accent); }
+    .t-blue  { color: var(--blue); }
+    .t-warn  { color: var(--warn); }
+
+    /* ── CERTIFICATIONS ── */
+    .certs__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      display: flex; gap: 16px; align-items: flex-start;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s, border-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .cert-card.visible { opacity: 1; transform: none; }
+    .cert-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: var(--border-accent); }
+    .cert-icon {
+      font-size: 1.4rem; width: 44px; height: 44px; min-width: 44px;
+      background: var(--accent-pale); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cert-card h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .cert-card p { font-size: 0.77rem; color: var(--text-muted); margin-bottom: 6px; }
+    .cert-date { font-family: var(--ff-mono); font-size: 0.67rem; color: var(--text-faint); letter-spacing: 0.06em; }
+
+    /* ── EXPERIENCE ── */
+    .exp-list { display: flex; flex-direction: column; gap: 18px; }
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s var(--ease), box-shadow 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .exp-card.visible { opacity: 1; transform: none; }
+    .exp-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .exp-card__header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 6px; }
+    .exp-card h3 { font-family: var(--ff-display); font-size: 1.5rem; letter-spacing: 0.04em; line-height: 1; }
+    .exp-card h4 { font-size: 0.9rem; color: var(--text-muted); font-weight: 400; margin-bottom: 18px; }
+    .exp-badge {
+      font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      padding: 5px 12px;
+      background: var(--accent-pale);
+      border: 1px solid var(--border-accent);
+      border-radius: 4px; color: var(--accent-deep);
+      white-space: nowrap;
+    }
+    .exp-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+    .exp-card li { font-size: 0.87rem; color: var(--text-muted); padding-left: 16px; position: relative; line-height: 1.55; }
+    .exp-card li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .exp-tag {
+      font-family: var(--ff-mono); font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 3px 9px; border-radius: 4px;
+      background: var(--accent-pale); border: 1px solid var(--border-accent);
+      color: var(--accent-deep);
+    }
+
+    /* ── CONTACT ── */
+    .contact__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .contact__info p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 30px; }
+    .contact__links { display: flex; flex-direction: column; gap: 11px; }
+    .contact__link {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none; color: var(--text-muted);
+      font-size: 0.88rem;
+      padding: 13px 16px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      transition: border-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .contact__link:hover {
+      border-color: var(--border-accent); color: var(--accent-deep);
+      transform: translateX(4px); box-shadow: var(--shadow-hover);
+    }
+    .contact__link .icon { font-size: 1rem; width: 28px; text-align: center; }
+
+    .contact__form { display: flex; flex-direction: column; gap: 14px; }
+    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form__group { display: flex; flex-direction: column; gap: 5px; }
+    .form__group label { font-family: var(--ff-mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+    .form__group input, .form__group textarea {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 11px 14px;
+      color: var(--text); font-family: var(--ff-body); font-size: 0.9rem;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .form__group input:focus, .form__group textarea:focus {
+      border-color: var(--border-accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+    .form__group input::placeholder, .form__group textarea::placeholder { color: #2e3f52; }
+    .form__group textarea { min-height: 118px; resize: vertical; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 26px 0; position: relative; z-index: 1; }
+    .footer__inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 52px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+    }
+    .footer__logo { font-family: var(--ff-mono); font-size: 0.9rem; color: var(--text-muted); text-decoration: none; }
+    .footer__logo .dot { color: var(--accent); }
+    .footer__copy { font-family: var(--ff-mono); font-size: 0.7rem; color: var(--text-faint); }
+    .footer__links { display: flex; gap: 22px; }
+    .footer__links a { font-family: var(--ff-mono); font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
+    .footer__links a:hover { color: var(--accent); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about__grid, .contact__grid { grid-template-columns: 1fr; gap: 40px; }
+      .threat-strip { flex-wrap: wrap; }
+      .threat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 768px) {
+      .nav { padding: 18px 20px; }
+      .nav.scrolled { padding: 14px 20px; }
+      .nav__links, .nav__cta { display: none; }
+      .nav__hamburger { display: flex; }
+      .container { padding: 0 20px; }
+      .footer__inner { padding: 0 20px; }
+      .section { padding: 65px 0; }
+      .section__title { font-size: 2rem; margin-bottom: 34px; }
+      .hero { padding: 100px 0 60px; }
+      .hero__name { font-size: clamp(3.5rem, 16vw, 6.5rem); }
+      .skills__grid, .proj__grid, .certs__grid { grid-template-columns: 1fr; }
+      .proj-card--big { grid-column: span 1; }
+      .about__stats { grid-template-columns: 1fr 1fr; }
+      .form__row { grid-template-columns: 1fr; }
+      .footer__inner { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .hero__cta { flex-direction: column; align-items: flex-start; }
+      .threat-strip { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero__name { font-size: 3rem; }
+      .about__stats { grid-template-columns: 1fr 1fr; }
+      .noc-bar { gap: 7px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="paper-bg"></div>
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__logo">KJ<span class="dot">.</span></a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:krishj3508@gmail.com" class="nav__cta">Say Hello</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="nav__mobile" id="mobileMenu">
+    <a href="#about" class="mob-link">About</a>
+    <a href="#skills" class="mob-link">Skills</a>
+    <a href="#projects" class="mob-link">Projects</a>
+    <a href="#certifications" class="mob-link">Certs</a>
+    <a href="#experience" class="mob-link">Experience</a>
+    <a href="#contact" class="mob-link">Contact</a>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container">
+
+        <!-- Terminal widget -->
+        <div class="hero-terminal">
+          <div class="term-bar">
+            <span class="term-dot" style="background:#ff5f56"></span>
+            <span class="term-dot" style="background:#ffbd2e"></span>
+            <span class="term-dot" style="background:#27c93f"></span>
+            <span class="term-title"><span class="term-host">krish</span>@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="term-line"><span class="term-prompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="term-line t-out">Starting Nmap 7.94 scan...</div>
+            <div class="term-line t-out">Scanning 256 hosts [2 ports/host]</div>
+            <div class="term-line t-ok">✓ Host 192.168.1.1 — up (0.003s latency)</div>
+            <div class="term-line t-ok">✓ Host 192.168.1.45 — up (0.007s latency)</div>
+            <div class="term-line t-warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="term-line term-section">
+              <span class="term-prompt">▸</span>wireshark --capture-filter "tcp" -i eth0
+            </div>
+            <div class="term-line t-out">Capturing on 'eth0'...</div>
+            <div class="term-line t-ok">✓ 1,247 packets captured — 0 anomalies</div>
+            <div class="term-line t-info">→ Protocol distribution: TCP 68%, UDP 22%, ICMP 10%</div>
+            <div class="term-line term-section">
+              <span class="term-prompt">▸</span><span id="typedCmd"></span><span class="term-cursor"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left hero content -->
+        <div class="noc-bar">
+          <span class="noc-dot"></span>
+          <span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span>
+          <span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span>
+          <span>THREATS: MONITORED</span>
+        </div>
+
+        <h1 class="hero__name">
+          <span class="solid">KRISH</span>
+          <span class="outline">JANI.</span>
+        </h1>
+
+        <p class="hero__role">IT Support & Cybersecurity Professional</p>
+
+        <p class="hero__sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified — ready for the NOC.</p>
+
+        <div class="cert-pills">
+          <span class="cert-pill">CompTIA Security+</span>
+          <span class="cert-pill">Google Cybersecurity</span>
+          <span class="cert-pill">Wireshark</span>
+          <span class="cert-pill">IBM AI Security</span>
+        </div>
+
+        <div class="hero__cta">
+          <a href="#projects" class="btn btn--accent">See My Work →</a>
+          <a href="#contact" class="btn btn--outline">Get in Touch</a>
+        </div>
+
+        <div class="hero__socials">
+          <a href="mailto:krishj3508@gmail.com">✉ krishj3508@gmail.com</a>
+          <span class="sep">|</span>
+          <a href="https://www.linkedin.com/in/krish1123/" target="_blank">LinkedIn</a>
+          <span class="sep">|</span>
+          <a href="https://github.com/jani333/jani333" target="_blank">GitHub</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="container">
+        <p class="section__label reveal">01 · About</p>
+        <h2 class="section__title reveal">WHO I <em>AM</em></h2>
+        <div class="about__grid">
+          <div class="about__text reveal">
+            <p>Recent graduate with <strong>CompTIA Security+</strong> certification and strong knowledge of network operations, IT systems support, and system monitoring.</p>
+            <p>Skilled in <strong>Active Directory, Microsoft 365, TCP/IP troubleshooting</strong>, network monitoring tools, and VMware environments — with hands-on experience supporting live IT infrastructure.</p>
+            <p>Eager to apply technical skills in supporting <strong>mission-critical systems in a fast-paced NOC environment</strong>, keeping organisations secure and operational.</p>
+            <div class="about__stats">
+              <div class="stat reveal"><div class="stat__num">3+</div><div class="stat__label">Years IT experience</div></div>
+              <div class="stat reveal"><div class="stat__num">4</div><div class="stat__label">Certifications</div></div>
+              <div class="stat reveal"><div class="stat__num">20%</div><div class="stat__label">Engagement boost</div></div>
+              <div class="stat reveal"><div class="stat__num">100%</div><div class="stat__label">On-time delivery</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="edu-card reveal">
+              <h3>SENECA COLLEGE</h3>
+              <p class="degree">Advanced Diploma · Computer Programming & Analysis</p>
+              <p class="date">Jan 2022 – Aug 2024 · Toronto, CA</p>
+            </div>
+            <div class="about-info-card reveal">
+              <div class="info-row">
+                <span class="info-label">Relevant Coursework</span>
+                <span class="info-val">Programming Fundamentals · Data Structures · Database Management · Web Development · Network Security · Software Engineering</span>
+              </div>
+            </div>
+            <div class="avail-card reveal">
+              <span class="avail-dot"></span>
+              <div>
+                <span class="avail-status">Available for Opportunities</span>
+                <span class="avail-detail">NOC Analyst · SOC Analyst · IT Support · Cybersecurity Roles · Toronto, CA</span>
+              </div>
+            </div>
+            <div class="tools-strip reveal">
+              <div class="tools-ticker">
+                <span>Nmap</span><span>Wireshark</span><span>Burp Suite</span><span>Metasploit</span>
+                <span>Active Directory</span><span>Azure AD</span><span>VMware</span><span>Docker</span>
+                <span>Next.js</span><span>PostgreSQL</span><span>Office 365</span><span>Cisco VPN</span>
+                <span>TCP/IP</span><span>OWASP</span><span>ServiceNow</span><span>SharePoint</span>
+                <span>Nmap</span><span>Wireshark</span><span>Burp Suite</span><span>Metasploit</span>
+                <span>Active Directory</span><span>Azure AD</span><span>VMware</span><span>Docker</span>
+                <span>Next.js</span><span>PostgreSQL</span><span>Office 365</span><span>Cisco VPN</span>
+                <span>TCP/IP</span><span>OWASP</span><span>ServiceNow</span><span>SharePoint</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <p class="section__label reveal">02 · Skills</p>
+        <h2 class="section__title reveal">WHAT I <em>DO</em></h2>
+        <div class="skills__grid">
+          <div class="skill-card">
+            <div class="skill-card__num">01</div>
+            <h3>Technical Support &<br>Troubleshooting</h3>
+            <ul>
+              <li>Diagnosing hardware, software, VPN & network issues</li>
+              <li>Level 1/2 support & ticket handling</li>
+              <li>POS systems & store IT infrastructure</li>
+              <li>System documentation & knowledge base</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__num">02</div>
+            <h3>System<br>Administration</h3>
+            <ul>
+              <li>Windows Server 2012/2016</li>
+              <li>Active Directory & Azure AD management</li>
+              <li>VMware virtualisation environments</li>
+              <li>Microsoft 365, SharePoint, Exchange Online</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__num">03</div>
+            <h3>Networking &<br>Monitoring Tools</h3>
+            <ul>
+              <li>TCP/IP troubleshooting & network printer mapping</li>
+              <li>Cisco VPN / AnyConnect configuration</li>
+              <li>System alerts investigation & monitoring</li>
+              <li>Wireshark packet capture & analysis</li>
+            </ul>
+          </div>
+          <div class="skill-card">
+            <div class="skill-card__num">04</div>
+            <h3>Cloud &<br>Security</h3>
+            <ul>
+              <li>Office 365 administration & SharePoint</li>
+              <li>Exchange Online & cloud security practices</li>
+              <li>Security monitoring & incident response</li>
+              <li>Next.js, Node.js, Docker, PostgreSQL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <p class="section__label reveal">03 · Projects</p>
+        <h2 class="section__title reveal">WHAT I'VE <em>BUILT</em></h2>
+
+        <!-- Security dashboard strip -->
+        <div class="threat-strip reveal">
+          <div class="threat-item">
+            <span class="threat-item__label">Threat Status</span>
+            <span class="threat-item__val t-green">● LOW — Monitored</span>
+          </div>
+          <div class="threat-item">
+            <span class="threat-item__label">Vulnerabilities Found</span>
+            <span class="threat-item__val t-warn">12 — OWASP Top 10</span>
+          </div>
+          <div class="threat-item">
+            <span class="threat-item__label">Packets Analysed</span>
+            <span class="threat-item__val t-blue">1,247 — 0 anomalies</span>
+          </div>
+          <div class="threat-item">
+            <span class="threat-item__label">THM Rooms</span>
+            <span class="threat-item__val t-green">50+ Completed</span>
+          </div>
+        </div>
+
+        <div class="proj__grid">
+          <div class="proj-card proj-card--big">
+            <div class="proj-card__top">
+              <span class="proj-card__badge">Security Research</span>
+              <span class="proj-card__icon">🛡️</span>
+            </div>
+            <h3>OWASP TOP 10 VULNERABILITY ASSESSMENT</h3>
+            <p>Conducted a comprehensive vulnerability assessment of a test web application using industry-standard tools. Identified and documented SQL Injection, XSS, and CSRF vulnerabilities. Delivered detailed remediation recommendations aligned with OWASP Top 10 guidelines, simulating a real-world penetration testing engagement.</p>
+            <div class="proj-tags">
+              <span class="ptag">Burp Suite</span>
+              <span class="ptag">OWASP ZAP</span>
+              <span class="ptag">Nmap</span>
+              <span class="ptag">Metasploit</span>
+              <span class="ptag">Kali Linux</span>
+              <span class="ptag">Web Security</span>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-card__top">
+              <span class="proj-card__badge">Full-Stack Web App</span>
+              <span class="proj-card__icon">⚙️</span>
+            </div>
+            <h3>EASYBLOGGING PLATFORM</h3>
+            <p>Built a full-stack blogging platform with user authentication, post management, and a rich text editor. Implemented secure session management and role-based access control to protect user data.</p>
+            <div class="proj-tags">
+              <span class="ptag">Next.js</span>
+              <span class="ptag">Node.js</span>
+              <span class="ptag">PostgreSQL</span>
+              <span class="ptag">REST API</span>
+              <span class="ptag">Auth</span>
+            </div>
+          </div>
+          <div class="proj-card">
+            <div class="proj-card__top">
+              <span class="proj-card__badge">CTF & Blue Team</span>
+              <span class="proj-card__icon">🎯</span>
+            </div>
+            <h3>TRYHACKME ROOMS</h3>
+            <p>Completed 50+ rooms covering network fundamentals, web exploitation, privilege escalation, digital forensics, and blue team operations. Simulated SOC analyst workflows in real-world-style environments.</p>
+            <div class="proj-tags">
+              <span class="ptag">CTF</span>
+              <span class="ptag">Networking</span>
+              <span class="ptag">Web Exploit</span>
+              <span class="ptag">Linux</span>
+              <span class="ptag">Blue Team</span>
+              <span class="ptag">SIEM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section class="section section--alt" id="certifications">
+      <div class="container">
+        <p class="section__label reveal">04 · Certifications</p>
+        <h2 class="section__title reveal">MY <em>CREDENTIALS</em></h2>
+        <div class="certs__grid">
+          <div class="cert-card">
+            <div class="cert-icon">🛡️</div>
+            <div>
+              <h3>CompTIA Security+</h3>
+              <p>Expertise in cybersecurity, risk management, threat detection & incident response.</p>
+              <p class="cert-date">February 2025</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🔐</div>
+            <div>
+              <h3>Google Cybersecurity Specialization</h3>
+              <p>Threat analysis, risk management & network security with hands-on labs.</p>
+              <p class="cert-date">October 2024</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🌐</div>
+            <div>
+              <h3>Wireshark for Beginners: Capture Packets</h3>
+              <p>Packet capturing and filtering using Wireshark in live network environments.</p>
+              <p class="cert-date">October 2024</p>
+            </div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-icon">🤖</div>
+            <div>
+              <h3>IBM Generative AI for Cybersecurity Professionals</h3>
+              <p>AI for threat detection, automated incident response & security reinforcement.</p>
+              <p class="cert-date">November 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="container">
+        <p class="section__label reveal">05 · Experience</p>
+        <h2 class="section__title reveal">WHERE I'VE <em>WORKED</em></h2>
+        <div class="exp-list">
+          <div class="exp-card">
+            <div class="exp-card__header">
+              <div>
+                <h3>MARKHAM FINE FOODS</h3>
+                <h4>IT Support / Manager · Toronto, CA</h4>
+              </div>
+              <span class="exp-badge">Jan 2022 — Present</span>
+            </div>
+            <ul>
+              <li>Troubleshoot and maintain POS systems, network connectivity, and store IT infrastructure, ensuring minimal downtime and smooth daily operations</li>
+              <li>Assist customers along with solving technical issues, resolving system-related concerns to enhance efficiency and improve the overall customer experience</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="exp-tag">POS Systems</span><span class="exp-tag">Network Connectivity</span>
+              <span class="exp-tag">IT Infrastructure</span><span class="exp-tag">Technical Support</span>
+            </div>
+          </div>
+
+          <div class="exp-card">
+            <div class="exp-card__header">
+              <div>
+                <h3>SENECA COLLEGE</h3>
+                <h4>Application Developer · Toronto, CA</h4>
+              </div>
+              <span class="exp-badge">Jan 2022 — Aug 2022</span>
+            </div>
+            <ul>
+              <li>Developed a scalable blogging application with Next.js, Node.js, Docker, and PostgreSQL, resulting in a 20% boost in user engagement and a 30% increase in system efficiency</li>
+              <li>Coordinated with a cross-functional agile team, achieving 100% on-time delivery of bi-weekly updates, aligning project deliverables with organisational goals and ensuring continuous improvement</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="exp-tag">Next.js</span><span class="exp-tag">Node.js</span>
+              <span class="exp-tag">Docker</span><span class="exp-tag">PostgreSQL</span>
+              <span class="exp-tag">Agile</span>
+            </div>
+          </div>
+        </div>
+
+          <!-- ══════════════════════════════════════════════════
+               SAVED FOR LATER — uncomment to re-enable
+          ═══════════════════════════════════════════════════ -->
+          <!--
+          <div class="exp-card">
+            <div class="exp-card__header">
+              <div>
+                <h3>TRYHACKME</h3>
+                <h4>Cybersecurity Student</h4>
+              </div>
+              <span class="exp-badge">2024 — Present</span>
+            </div>
+            <ul>
+              <li>Completed 50+ hands-on rooms covering network security, web exploitation, digital forensics, and SOC operations</li>
+              <li>Practised real-world penetration testing techniques including privilege escalation, enumeration, and lateral movement</li>
+              <li>Applied blue team skills including log analysis, SIEM fundamentals, and incident response methodologies</li>
+              <li>Gained practical experience with Nmap, Burp Suite, Wireshark, Metasploit, and Splunk in simulated environments</li>
+            </ul>
+            <div class="exp-tags">
+              <span class="exp-tag">TryHackMe</span><span class="exp-tag">Nmap</span>
+              <span class="exp-tag">Burp Suite</span><span class="exp-tag">Wireshark</span>
+              <span class="exp-tag">Metasploit</span><span class="exp-tag">Splunk</span><span class="exp-tag">SOC</span>
+            </div>
+          </div>
+          -->
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <p class="section__label reveal">06 · Contact</p>
+        <h2 class="section__title reveal">LET'S <em>CONNECT</em></h2>
+        <div class="contact__grid">
+          <div class="contact__info reveal">
+            <p>Currently open to NOC/SOC analyst roles, IT support positions, and cybersecurity opportunities. Feel free to reach out — I'd love to connect.</p>
+            <div class="contact__links">
+              <a href="mailto:krishj3508@gmail.com" class="contact__link">
+                <span class="icon">✉</span><span>krishj3508@gmail.com</span>
+              </a>
+              <a href="https://www.linkedin.com/in/krish1123/" target="_blank" class="contact__link">
+                <span class="icon">in</span><span>linkedin.com/in/krish1123</span>
+              </a>
+              <a href="https://github.com/jani333/jani333" target="_blank" class="contact__link">
+                <span class="icon">⌥</span><span>github.com/jani333/jani333</span>
+              </a>
+              <a href="KrishJani.pdf" target="_blank" class="contact__link">
+                <span class="icon">↓</span><span>Download Resume (PDF)</span>
+              </a>
+            </div>
+          </div>
+          <div class="contact__form reveal">
+            <form onsubmit="return false;">
+              <div class="form__row">
+                <div class="form__group"><label>Name</label><input type="text" placeholder="Your name"></div>
+                <div class="form__group"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+              </div>
+              <div class="form__group"><label>Subject</label><input type="text" placeholder="Job opportunity, collaboration…"></div>
+              <div class="form__group"><label>Message</label><textarea placeholder="Tell me what you have in mind…"></textarea></div>
+              <button type="submit" class="btn btn--accent" style="width:100%;justify-content:center;margin-top:4px;">Send Message →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="footer__inner">
+      <a href="#hero" class="footer__logo">KJ<span class="dot">.</span></a>
+      <p class="footer__copy">© 2024 Krish Jani · Cybersecurity Professional</p>
+      <div class="footer__links">
+        <a href="https://www.linkedin.com/in/krish1123/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/jani333/jani333" target="_blank">GitHub</a>
+        <a href="KrishJani.pdf" target="_blank">Resume</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll restoration
+    if (history.scrollRestoration) history.scrollRestoration = 'manual';
+    window.addEventListener('load', () => window.scrollTo(0, 0));
+
+    // Nav + progress bar
+    const nav = document.getElementById('nav');
+    const pb  = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY;
+      const t = document.documentElement.scrollHeight - window.innerHeight;
+      pb.style.width = (s / t * 100) + '%';
+      nav.classList.toggle('scrolled', s > 40);
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger  = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }));
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.10 });
+    document.querySelectorAll('.reveal, .skill-card, .proj-card, .cert-card, .exp-card').forEach(el => io.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks  = document.querySelectorAll('.nav__links a');
+    const linkObs   = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => linkObs.observe(s));
+
+    // Terminal typing effect
+    (function() {
+      const cmds = [
+        'sudo tcpdump -i eth0 -n',
+        'sqlmap -u target.local --dbs',
+        'burpsuite --proxy-port 8080',
+        'nmap --script vuln 10.0.0.1',
+        'metasploit console -q',
+      ];
+      let ci = 0, ti = 0, deleting = false;
+      const el = document.getElementById('typedCmd');
+      if (!el) return;
+      function type() {
+        const cmd = cmds[ci];
+        if (!deleting) {
+          el.textContent = cmd.substring(0, ++ti);
+          if (ti === cmd.length) { deleting = true; setTimeout(type, 1800); return; }
+        } else {
+          el.textContent = cmd.substring(0, --ti);
+          if (ti === 0) { deleting = false; ci = (ci + 1) % cmds.length; }
+        }
+        setTimeout(type, deleting ? 38 : 68);
+      }
+      setTimeout(type, 1000);
+    })();
+  </script>
+</body>
+</html>

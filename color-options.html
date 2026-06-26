@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Theme Options — Krish Jani Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500&family=Orbitron:wght@600;700;800&family=Source+Code+Pro:wght@400;500&family=Rubik:wght@300;400;500&family=Exo+2:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0a0a0a; padding: 40px 24px 80px; }
+
+    .page-title {
+      text-align: center;
+      color: #fff;
+      font-family: system-ui;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #888;
+    }
+    .page-sub {
+      text-align: center;
+      color: #444;
+      font-family: system-ui;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 52px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .option { border-radius: 16px; overflow: hidden; position: relative; }
+    .option-label {
+      position: absolute; top: 18px; left: 22px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+      z-index: 10;
+    }
+
+    /* ─────────────────────────────────────────────────
+       OPTION A — CARBON & LIME
+       BG: #0e1014 (near black, warm charcoal)
+       Accent: #a3e635 (lime green — hacker vibes)
+       Fonts: Rajdhani + Fira Code + Inter
+    ───────────────────────────────────────────────── */
+    .opt-a {
+      background: #0e1014;
+      border: 1px solid rgba(163,230,53,0.12);
+    }
+    .opt-a .option-label { background: rgba(163,230,53,0.12); color: #a3e635; border: 1px solid rgba(163,230,53,0.25); }
+
+    .opt-a .grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(163,230,53,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,230,53,0.07) 1px, transparent 1px),
+        linear-gradient(rgba(163,230,53,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(163,230,53,0.03) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    }
+
+    .opt-a .hero-content { position: relative; z-index: 1; padding: 40px 36px; }
+    .opt-a .noc-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.65rem; letter-spacing: 0.1em;
+      color: #4a5260; margin-bottom: 18px;
+    }
+    .opt-a .noc-dot { width: 6px; height: 6px; border-radius: 50%; background: #a3e635; animation: pulseA 2s infinite; }
+    @keyframes pulseA { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .opt-a .noc-live { color: #a3e635; font-weight: 600; }
+    .opt-a .noc-sep  { color: #1e2229; }
+
+    .opt-a .name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(3.2rem, 7vw, 5.8rem);
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+    }
+    .opt-a .name .solid  { display: block; color: #e8ecf0; }
+    .opt-a .name .outline { display: block; color: transparent; -webkit-text-stroke: 2px #a3e635; }
+
+    .opt-a .role {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #a3e635;
+      margin-bottom: 14px;
+    }
+    .opt-a .sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; color: #5a6475; max-width: 380px; margin-bottom: 20px;
+    }
+    .opt-a .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .opt-a .pill {
+      font-family: 'Fira Code', monospace; font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 11px; border-radius: 4px;
+      background: rgba(163,230,53,0.08); border: 1px solid rgba(163,230,53,0.2);
+      color: #a3e635;
+    }
+    .opt-a .btns { display: flex; gap: 10px; }
+    .opt-a .btn-main {
+      font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: #a3e635; color: #0e1014; font-weight: 600; border: none; cursor: default;
+    }
+    .opt-a .btn-out {
+      font-family: 'Fira Code', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: transparent; color: #5a6475; border: 1px solid #1e2229; cursor: default;
+    }
+
+    .opt-a .term {
+      margin-top: 26px;
+      background: #070a0d;
+      border: 1px solid rgba(163,230,53,0.18);
+      border-radius: 10px; overflow: hidden;
+    }
+    .opt-a .term-bar {
+      background: #0d1117; padding: 9px 14px;
+      border-bottom: 1px solid rgba(163,230,53,0.1);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .opt-a .tdot { width: 9px; height: 9px; border-radius: 50%; }
+    .opt-a .ttitle { font-family: 'Fira Code', monospace; font-size: 0.62rem; color: #2a3040; margin-left: 6px; }
+    .opt-a .term-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .opt-a .tl { font-family: 'Fira Code', monospace; font-size: 0.68rem; color: #3a4455; }
+    .opt-a .tl.ok   { color: #a3e635; padding-left: 10px; }
+    .opt-a .tl.warn { color: #facc15; padding-left: 10px; }
+    .opt-a .tl.dim  { color: #262e3a; padding-left: 10px; }
+    .opt-a .tprompt { color: #a3e635; font-weight: 700; margin-right: 6px; }
+    .opt-a .tcursor { display: inline-block; width: 6px; height: 12px; background: #a3e635; vertical-align: middle; margin-left: 1px; animation: blink 1.1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .opt-a .font-note {
+      font-family: 'Fira Code', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; color: #2a3040;
+      padding: 10px 36px; border-top: 1px solid #141820;
+      text-align: right;
+    }
+
+
+    /* ─────────────────────────────────────────────────
+       OPTION B — NAVY OPERATIONS
+       BG: #0d1628 (deep navy)
+       Accent: #38bdf8 (electric sky blue)
+       Fonts: Exo 2 + IBM Plex Mono + DM Sans
+    ───────────────────────────────────────────────── */
+    .opt-b {
+      background: #0a1525;
+      border: 1px solid rgba(56,189,248,0.1);
+    }
+    .opt-b .option-label { background: rgba(56,189,248,0.1); color: #38bdf8; border: 1px solid rgba(56,189,248,0.22); }
+
+    .opt-b .grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(56,189,248,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,0.06) 1px, transparent 1px),
+        linear-gradient(rgba(56,189,248,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,0.025) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    }
+
+    .opt-b .hero-content { position: relative; z-index: 1; padding: 40px 36px; }
+    .opt-b .noc-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.63rem; letter-spacing: 0.1em; color: #1e3a5f; margin-bottom: 18px;
+    }
+    .opt-b .noc-dot { width: 6px; height: 6px; border-radius: 50%; background: #22d3ee; animation: pulseB 2s infinite; }
+    @keyframes pulseB { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .opt-b .noc-live { color: #22d3ee; font-weight: 600; }
+    .opt-b .noc-sep  { color: #112040; }
+
+    .opt-b .name {
+      font-family: 'Exo 2', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+    .opt-b .name .solid  { display: block; color: #c8dff4; }
+    .opt-b .name .outline { display: block; color: transparent; -webkit-text-stroke: 2px #38bdf8; }
+
+    .opt-b .role {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #38bdf8;
+      margin-bottom: 14px;
+    }
+    .opt-b .sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; color: #2a4a6a; max-width: 380px; margin-bottom: 20px;
+    }
+    .opt-b .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .opt-b .pill {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 11px; border-radius: 4px;
+      background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2); color: #38bdf8;
+    }
+    .opt-b .btns { display: flex; gap: 10px; }
+    .opt-b .btn-main {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: #38bdf8; color: #050e1c; font-weight: 600; border: none; cursor: default;
+    }
+    .opt-b .btn-out {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: transparent; color: #1e3a5f; border: 1px solid #112040; cursor: default;
+    }
+
+    .opt-b .term {
+      margin-top: 26px;
+      background: #060d18;
+      border: 1px solid rgba(56,189,248,0.14);
+      border-radius: 10px; overflow: hidden;
+    }
+    .opt-b .term-bar {
+      background: #0a1222; padding: 9px 14px;
+      border-bottom: 1px solid rgba(56,189,248,0.09);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .opt-b .tdot { width: 9px; height: 9px; border-radius: 50%; }
+    .opt-b .ttitle { font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; color: #1a2e45; margin-left: 6px; }
+    .opt-b .term-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .opt-b .tl { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: #1e3a55; }
+    .opt-b .tl.ok   { color: #34d399; padding-left: 10px; }
+    .opt-b .tl.warn { color: #fbbf24; padding-left: 10px; }
+    .opt-b .tl.dim  { color: #0f2036; padding-left: 10px; }
+    .opt-b .tprompt { color: #38bdf8; font-weight: 700; margin-right: 6px; }
+    .opt-b .tcursor { display: inline-block; width: 6px; height: 12px; background: #38bdf8; vertical-align: middle; margin-left: 1px; animation: blink 1.1s step-end infinite; }
+
+    .opt-b .font-note {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; color: #0e2240;
+      padding: 10px 36px; border-top: 1px solid #0a1830;
+      text-align: right;
+    }
+
+
+    /* ─────────────────────────────────────────────────
+       OPTION C — GUNMETAL AMBER (SOC ALERT)
+       BG: #141218 (very dark warm charcoal)
+       Accent: #f59e0b (amber/orange — alert/warning feel)
+       Secondary: #22d3ee (cyan for successes)
+       Fonts: Orbitron + Source Code Pro + Rubik
+    ───────────────────────────────────────────────── */
+    .opt-c {
+      background: #141218;
+      border: 1px solid rgba(245,158,11,0.1);
+    }
+    .opt-c .option-label { background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid rgba(245,158,11,0.22); }
+
+    .opt-c .grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(245,158,11,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.055) 1px, transparent 1px),
+        linear-gradient(rgba(245,158,11,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(245,158,11,0.022) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    }
+    .opt-c .grid-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 10%, rgba(245,158,11,0.05) 0%, transparent 55%);
+    }
+
+    .opt-c .hero-content { position: relative; z-index: 1; padding: 40px 36px; }
+    .opt-c .noc-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.63rem; letter-spacing: 0.1em; color: #35302a; margin-bottom: 18px;
+    }
+    .opt-c .noc-dot { width: 6px; height: 6px; border-radius: 50%; background: #22d3ee; animation: pulseC 2s infinite; }
+    @keyframes pulseC { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .opt-c .noc-live { color: #22d3ee; font-weight: 600; }
+    .opt-c .noc-sep  { color: #1e1a22; }
+
+    .opt-c .name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0.06em;
+      margin-bottom: 14px;
+    }
+    .opt-c .name .solid  { display: block; color: #e8e0d0; }
+    .opt-c .name .outline { display: block; color: transparent; -webkit-text-stroke: 1.5px #f59e0b; }
+
+    .opt-c .role {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.66rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #f59e0b;
+      margin-bottom: 14px;
+    }
+    .opt-c .sub {
+      font-family: 'Rubik', sans-serif;
+      font-size: 0.88rem; color: #35302a; max-width: 380px; margin-bottom: 20px;
+    }
+    .opt-c .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .opt-c .pill {
+      font-family: 'Source Code Pro', monospace; font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 11px; border-radius: 4px;
+      background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); color: #f59e0b;
+    }
+    .opt-c .btns { display: flex; gap: 10px; }
+    .opt-c .btn-main {
+      font-family: 'Source Code Pro', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: #f59e0b; color: #0a0808; font-weight: 700; border: none; cursor: default;
+    }
+    .opt-c .btn-out {
+      font-family: 'Source Code Pro', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: transparent; color: #35302a; border: 1px solid #201c28; cursor: default;
+    }
+
+    .opt-c .term {
+      margin-top: 26px;
+      background: #0b0910;
+      border: 1px solid rgba(245,158,11,0.12);
+      border-radius: 10px; overflow: hidden;
+    }
+    .opt-c .term-bar {
+      background: #100e16; padding: 9px 14px;
+      border-bottom: 1px solid rgba(245,158,11,0.08);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .opt-c .tdot { width: 9px; height: 9px; border-radius: 50%; }
+    .opt-c .ttitle { font-family: 'Source Code Pro', monospace; font-size: 0.62rem; color: #201a28; margin-left: 6px; }
+    .opt-c .term-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .opt-c .tl { font-family: 'Source Code Pro', monospace; font-size: 0.68rem; color: #2a2232; }
+    .opt-c .tl.ok   { color: #22d3ee; padding-left: 10px; }
+    .opt-c .tl.warn { color: #f59e0b; padding-left: 10px; }
+    .opt-c .tl.dim  { color: #1a1422; padding-left: 10px; }
+    .opt-c .tprompt { color: #f59e0b; font-weight: 700; margin-right: 6px; }
+    .opt-c .tcursor { display: inline-block; width: 6px; height: 12px; background: #f59e0b; vertical-align: middle; margin-left: 1px; animation: blink 1.1s step-end infinite; }
+
+    .opt-c .font-note {
+      font-family: 'Source Code Pro', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; color: #201a28;
+      padding: 10px 36px; border-top: 1px solid #18141e;
+      text-align: right;
+    }
+
+
+    /* ─────────────────────────────────────────────────
+       OPTION D — SLATE & EMERALD (CLEAN PRO)
+       BG: #10151e (dark blue-slate — GitHub dark style)
+       Accent: #10b981 (emerald green — confident, clean)
+       Fonts: Syne + JetBrains Mono + Plus Jakarta Sans
+    ───────────────────────────────────────────────── */
+    .opt-d {
+      background: #10151e;
+      border: 1px solid rgba(16,185,129,0.1);
+    }
+    .opt-d .option-label { background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.22); }
+
+    .opt-d .grid-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(rgba(16,185,129,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,185,129,0.07) 1px, transparent 1px),
+        linear-gradient(rgba(16,185,129,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16,185,129,0.03) 1px, transparent 1px);
+      background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px;
+    }
+    .opt-d .grid-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 25% 85%, rgba(16,185,129,0.04) 0%, transparent 55%);
+    }
+
+    .opt-d .hero-content { position: relative; z-index: 1; padding: 40px 36px; }
+    .opt-d .noc-row {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.63rem; letter-spacing: 0.1em; color: #1e2d3d; margin-bottom: 18px;
+    }
+    .opt-d .noc-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: pulseD 2s infinite; }
+    @keyframes pulseD { 0%,100%{opacity:1} 50%{opacity:0.35} }
+    .opt-d .noc-live { color: #10b981; font-weight: 600; }
+    .opt-d .noc-sep  { color: #151f2e; }
+
+    .opt-d .name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .opt-d .name .solid  { display: block; color: #d4dde8; }
+    .opt-d .name .outline { display: block; color: transparent; -webkit-text-stroke: 2px #10b981; }
+
+    .opt-d .role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.67rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #10b981;
+      margin-bottom: 14px;
+    }
+    .opt-d .sub {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.88rem; color: #2a3a4a; max-width: 380px; margin-bottom: 20px;
+    }
+    .opt-d .pills { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .opt-d .pill {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.06em;
+      padding: 4px 11px; border-radius: 4px;
+      background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); color: #10b981;
+    }
+    .opt-d .btns { display: flex; gap: 10px; }
+    .opt-d .btn-main {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: #10b981; color: #050e0a; font-weight: 600; border: none; cursor: default;
+    }
+    .opt-d .btn-out {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 10px 22px; border-radius: 6px;
+      background: transparent; color: #1e2d3d; border: 1px solid #151f2e; cursor: default;
+    }
+
+    .opt-d .term {
+      margin-top: 26px;
+      background: #090d14;
+      border: 1px solid rgba(16,185,129,0.14);
+      border-radius: 10px; overflow: hidden;
+    }
+    .opt-d .term-bar {
+      background: #0d1220; padding: 9px 14px;
+      border-bottom: 1px solid rgba(16,185,129,0.08);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .opt-d .tdot { width: 9px; height: 9px; border-radius: 50%; }
+    .opt-d .ttitle { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; color: #182030; margin-left: 6px; }
+    .opt-d .term-body { padding: 12px 16px; display: flex; flex-direction: column; gap: 6px; }
+    .opt-d .tl { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; color: #1c2a38; }
+    .opt-d .tl.ok   { color: #10b981; padding-left: 10px; }
+    .opt-d .tl.warn { color: #f59e0b; padding-left: 10px; }
+    .opt-d .tl.dim  { color: #141e2c; padding-left: 10px; }
+    .opt-d .tprompt { color: #10b981; font-weight: 700; margin-right: 6px; }
+    .opt-d .tcursor { display: inline-block; width: 6px; height: 12px; background: #10b981; vertical-align: middle; margin-left: 1px; animation: blink 1.1s step-end infinite; }
+
+    .opt-d .font-note {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+      letter-spacing: 0.08em; color: #162030;
+      padding: 10px 36px; border-top: 1px solid #131a27;
+      text-align: right;
+    }
+
+    @media (max-width: 900px) {
+      .options-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Color & Font Options</p>
+  <p class="page-sub">Choose a theme — same layout as preview-v4, new colours and fonts throughout</p>
+
+  <div class="options-grid">
+
+    <!-- ═══════════ OPTION A — CARBON & LIME ═══════════ -->
+    <div class="option opt-a">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option A — Carbon & Lime</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span>
+          <span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span>
+          <span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span>
+          <span>THREATS: MONITORED</span>
+        </div>
+        <div class="name">
+          <span class="solid">KRISH</span>
+          <span class="outline">JANI.</span>
+        </div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span>
+          <span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span>
+          <span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns">
+          <span class="btn-main">See My Work →</span>
+          <span class="btn-out">Get in Touch</span>
+        </div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Rajdhani (headings) · Fira Code (mono) · Inter (body)</div>
+    </div>
+
+    <!-- ═══════════ OPTION B — NAVY OPERATIONS ═══════════ -->
+    <div class="option opt-b">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option B — Navy Operations</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span>
+          <span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span>
+          <span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span>
+          <span>THREATS: MONITORED</span>
+        </div>
+        <div class="name">
+          <span class="solid">KRISH</span>
+          <span class="outline">JANI.</span>
+        </div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span>
+          <span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span>
+          <span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns">
+          <span class="btn-main">See My Work →</span>
+          <span class="btn-out">Get in Touch</span>
+        </div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Exo 2 (headings) · IBM Plex Mono (mono) · DM Sans (body)</div>
+    </div>
+
+    <!-- ═══════════ OPTION C — GUNMETAL AMBER ═══════════ -->
+    <div class="option opt-c">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option C — Gunmetal & Amber</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span>
+          <span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span>
+          <span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span>
+          <span>THREATS: MONITORED</span>
+        </div>
+        <div class="name">
+          <span class="solid">KRISH</span>
+          <span class="outline">JANI.</span>
+        </div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span>
+          <span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span>
+          <span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns">
+          <span class="btn-main">See My Work →</span>
+          <span class="btn-out">Get in Touch</span>
+        </div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Orbitron (headings) · Source Code Pro (mono) · Rubik (body)</div>
+    </div>
+
+    <!-- ═══════════ OPTION D — SLATE & EMERALD ═══════════ -->
+    <div class="option opt-d">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option D — Slate & Emerald</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span>
+          <span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span>
+          <span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span>
+          <span>THREATS: MONITORED</span>
+        </div>
+        <div class="name">
+          <span class="solid">KRISH</span>
+          <span class="outline">JANI.</span>
+        </div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span>
+          <span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span>
+          <span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns">
+          <span class="btn-main">See My Work →</span>
+          <span class="btn-out">Get in Touch</span>
+        </div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Syne (headings) · JetBrains Mono (mono) · Plus Jakarta Sans (body)</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

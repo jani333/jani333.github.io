@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>More Constellation-Style Options</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0a; font-family: 'Inter', sans-serif; color: #e0e0e0; padding: 40px; }
+    h1 { font-size: 1.2rem; font-weight: 700; color: #00d4ff; font-family: 'JetBrains Mono', monospace; margin-bottom: 8px; letter-spacing: 0.08em; }
+    p.sub { font-size: 0.82rem; color: #555; margin-bottom: 40px; font-family: 'JetBrains Mono', monospace; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .option { border-radius: 12px; overflow: hidden; border: 1px solid #222; position: relative; height: 340px; cursor: pointer; transition: border-color 0.2s, transform 0.2s; }
+    .option:hover { border-color: #00d4ff; transform: translateY(-3px); }
+    .bg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 22px; background: linear-gradient(to top, rgba(0,0,0,0.95) 55%, transparent); z-index: 10; }
+    .num { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: #00d4ff; letter-spacing: 0.15em; margin-bottom: 4px; }
+    .title { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .desc { font-size: 0.75rem; color: #888; line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <h1>// constellation_variations.preview</h1>
+  <p class="sub">similar to option 7 — tell me which number to apply</p>
+
+  <div class="grid">
+
+    <!-- OPTION A: SUBNET CLUSTERS -->
+    <div class="option">
+      <svg class="bg" id="svgA" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="gA1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(0,212,255,0.09)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <radialGradient id="gA2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(0,229,160,0.07)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <radialGradient id="gA3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="rgba(123,97,255,0.07)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="600" height="340" fill="#03050f"/>
+        <!-- built by JS -->
+        <g id="aRings"></g>
+        <g id="aEdges"></g>
+        <g id="aNodes"></g>
+        <g id="aLabels" font-family="JetBrains Mono, monospace"></g>
+      </svg>
+      <div class="label">
+        <div class="num">OPTION A</div>
+        <div class="title">Subnet Clusters</div>
+        <div class="desc">Nodes grouped into tight subnet clouds (LAN, DMZ, WAN) joined by gateway hubs — exactly how a network diagram looks.</div>
+      </div>
+    </div>
+
+    <!-- OPTION B: DEEP SPACE / SPARSE -->
+    <div class="option">
+      <svg class="bg" id="svgB" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="gB" cx="45%" cy="40%" r="55%"><stop offset="0%" stop-color="rgba(0,212,255,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="600" height="340" fill="#02020a"/>
+        <rect width="600" height="340" fill="url(#gB)"/>
+        <g id="bStars"></g>
+        <g id="bEdges"></g>
+        <g id="bNodes"></g>
+        <g id="bLabels" font-family="JetBrains Mono, monospace" font-size="6.5" fill="rgba(0,212,255,0.25)"></g>
+      </svg>
+      <div class="label">
+        <div class="num">OPTION B</div>
+        <div class="title">Deep Space / Sparse</div>
+        <div class="desc">Fewer, larger nodes floating far apart on near-black. Minimal, cosmic feel — like a threat intelligence dark-web map.</div>
+      </div>
+    </div>
+
+    <!-- OPTION C: LAYERED NETWORK STACK -->
+    <div class="option">
+      <svg class="bg" id="svgC" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="gC1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(0,212,255,0.0)"/><stop offset="50%" stop-color="rgba(0,212,255,0.05)"/><stop offset="100%" stop-color="rgba(0,212,255,0.0)"/></linearGradient>
+          <linearGradient id="gC2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(0,229,160,0.0)"/><stop offset="50%" stop-color="rgba(0,229,160,0.04)"/><stop offset="100%" stop-color="rgba(0,229,160,0.0)"/></linearGradient>
+          <linearGradient id="gC3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="rgba(123,97,255,0.0)"/><stop offset="50%" stop-color="rgba(123,97,255,0.04)"/><stop offset="100%" stop-color="rgba(123,97,255,0.0)"/></linearGradient>
+        </defs>
+        <rect width="600" height="340" fill="#030510"/>
+        <g id="cBands"></g>
+        <g id="cEdges"></g>
+        <g id="cNodes"></g>
+        <g id="cLabels" font-family="JetBrains Mono, monospace"></g>
+      </svg>
+      <div class="label">
+        <div class="num">OPTION C</div>
+        <div class="title">Layered Network Stack</div>
+        <div class="desc">Nodes arranged in horizontal bands (Internet → Perimeter → Internal → Core). Cross-layer edges show data flow. Very structured.</div>
+      </div>
+    </div>
+
+    <!-- OPTION D: PARTICLE MESH -->
+    <div class="option">
+      <svg class="bg" id="svgD" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="gD1" cx="30%" cy="60%" r="50%"><stop offset="0%" stop-color="rgba(0,212,255,0.06)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+          <radialGradient id="gD2" cx="75%" cy="30%" r="45%"><stop offset="0%" stop-color="rgba(123,97,255,0.05)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        </defs>
+        <rect width="600" height="340" fill="#030308"/>
+        <rect width="600" height="340" fill="url(#gD1)"/>
+        <rect width="600" height="340" fill="url(#gD2)"/>
+        <g id="dEdges"></g>
+        <g id="dNodes"></g>
+      </svg>
+      <div class="label">
+        <div class="num">OPTION D</div>
+        <div class="title">Dense Particle Mesh</div>
+        <div class="desc">Many small nodes packed tighter with shorter edges — looks like a live traffic analysis mesh or packet-level network view. Very intense.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const ns = 'http://www.w3.org/2000/svg';
+    function el(tag, attrs) {
+      const e = document.createElementNS(ns, tag);
+      Object.entries(attrs).forEach(([k,v]) => e.setAttribute(k, v));
+      return e;
+    }
+    // Seeded RNG
+    function makeRng(seed) {
+      let s = seed;
+      return function() { s = (s * 16807) % 2147483647; return (s - 1) / 2147483646; };
+    }
+
+    // ── OPTION A: SUBNET CLUSTERS ──
+    (function() {
+      const rng = makeRng(7);
+      const eG = document.getElementById('aEdges');
+      const nG = document.getElementById('aNodes');
+      const lG = document.getElementById('aLabels');
+      const rG = document.getElementById('aRings');
+
+      // Define 4 clusters
+      const clusters = [
+        { cx: 110, cy:  90, r: 68,  col: '0,212,255',  name: '10.0.1.0/24',  label: 'LAN-A',   count: 8  },
+        { cx: 420, cy:  80, r: 60,  col: '0,229,160',  name: '10.0.2.0/24',  label: 'DMZ',      count: 6  },
+        { cx: 120, cy: 250, r: 58,  col: '123,97,255', name: '10.0.3.0/24',  label: 'CORP',     count: 7  },
+        { cx: 430, cy: 255, r: 55,  col: '0,180,220',  name: '10.0.4.0/24',  label: 'SERVER',   count: 6  },
+      ];
+      // Gateway hubs
+      const hubs = [
+        { x: 265, y: 165, col: '0,212,255',  size: 5, label: 'GATEWAY' },
+        { x: 300, y: 165, col: '0,229,160',  size: 4, label: 'FIREWALL' },
+      ];
+
+      const allNodes = [];
+
+      clusters.forEach(c => {
+        // ring background
+        rG.appendChild(el('circle', { cx: c.cx, cy: c.cy, r: c.r, fill: 'rgba(' + c.col + ',0.04)', stroke: 'rgba(' + c.col + ',0.1)', 'stroke-width': '0.8', 'stroke-dasharray': '4 3' }));
+        // cluster label
+        const lt = document.createElementNS(ns, 'text');
+        lt.setAttribute('x', c.cx); lt.setAttribute('y', c.cy - c.r - 5);
+        lt.setAttribute('text-anchor', 'middle');
+        lt.setAttribute('font-size', '6.5'); lt.setAttribute('fill', 'rgba(' + c.col + ',0.35)');
+        lt.textContent = c.label + '  ' + c.name;
+        lG.appendChild(lt);
+
+        // nodes inside cluster
+        for (let i = 0; i < c.count; i++) {
+          const angle = (i / c.count) * Math.PI * 2 + rng() * 0.8;
+          const dist  = c.r * (0.3 + rng() * 0.55);
+          const nx = c.cx + Math.cos(angle) * dist;
+          const ny = c.cy + Math.sin(angle) * dist;
+          const isMain = i === 0;
+          const nr = isMain ? 3 : 1.4 + rng();
+          allNodes.push({ x: nx, y: ny, col: c.col, r: nr, cluster: c });
+
+          // intra-cluster edges to center hub point
+          if (!isMain) {
+            eG.appendChild(el('line', { x1: c.cx, y1: c.cy, x2: nx.toFixed(1), y2: ny.toFixed(1), stroke: 'rgba(' + c.col + ',0.15)', 'stroke-width': '0.6' }));
+          }
+        }
+
+        // Cluster center node
+        nG.appendChild(el('circle', { cx: c.cx, cy: c.cy, r: 10, fill: 'rgba(' + c.col + ',0.06)' }));
+        nG.appendChild(el('circle', { cx: c.cx, cy: c.cy, r: 3.5, fill: 'rgba(' + c.col + ',1)' }));
+      });
+
+      // Hub nodes
+      hubs.forEach(h => {
+        nG.appendChild(el('circle', { cx: h.x, cy: h.y, r: h.size * 2.5, fill: 'rgba(' + h.col + ',0.1)' }));
+        nG.appendChild(el('circle', { cx: h.x, cy: h.y, r: h.size, fill: 'rgba(' + h.col + ',0.9)' }));
+        const lt = document.createElementNS(ns, 'text');
+        lt.setAttribute('x', h.x + 8); lt.setAttribute('y', h.y - 6);
+        lt.setAttribute('font-size', '6'); lt.setAttribute('fill', 'rgba(' + h.col + ',0.38)');
+        lt.textContent = h.label;
+        lG.appendChild(lt);
+      });
+
+      // Inter-cluster edges (through hubs)
+      const gx = 282, gy = 165;
+      clusters.forEach(c => {
+        eG.appendChild(el('line', { x1: c.cx, y1: c.cy, x2: gx, y2: gy, stroke: 'rgba(' + c.col + ',0.18)', 'stroke-width': '0.8', 'stroke-dasharray': '5 4' }));
+      });
+      // hub-hub
+      eG.appendChild(el('line', { x1: hubs[0].x, y1: hubs[0].y, x2: hubs[1].x, y2: hubs[1].y, stroke: 'rgba(0,212,255,0.3)', 'stroke-width': '1' }));
+
+      // Draw member nodes
+      allNodes.forEach(n => {
+        nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r * 2.5, fill: 'rgba(' + n.col + ',0.1)' }));
+        nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r, fill: 'rgba(' + n.col + ',0.8)' }));
+      });
+    })();
+
+    // ── OPTION B: DEEP SPACE / SPARSE ──
+    (function() {
+      const rng = makeRng(13);
+      const stG = document.getElementById('bStars');
+      const eG  = document.getElementById('bEdges');
+      const nG  = document.getElementById('bNodes');
+      const lG  = document.getElementById('bLabels');
+      const W = 600, H = 340;
+
+      // Tiny background stars
+      for (let i = 0; i < 90; i++) {
+        const s = rng() * 0.8 + 0.3;
+        stG.appendChild(el('circle', { cx: (rng()*W).toFixed(1), cy: (rng()*H).toFixed(1), r: s.toFixed(2), fill: 'rgba(180,220,255,' + (rng()*0.25+0.05).toFixed(2) + ')' }));
+      }
+
+      // Few large nodes
+      const types = [
+        { col: '0,212,255',  r: 6,   label: 'THREAT-ACTOR-01', glow: 20 },
+        { col: '0,229,160',  r: 5,   label: 'C2-SERVER',        glow: 16 },
+        { col: '123,97,255', r: 4.5, label: 'BOTNET-NODE',      glow: 14 },
+        { col: '255,140,50', r: 4,   label: 'EXFIL-TARGET',     glow: 12 },
+        { col: '0,212,255',  r: 3.5, label: 'PIVOT-HOST',       glow: 10 },
+        { col: '0,180,220',  r: 3,   label: 'RECON-BOT',        glow: 9  },
+        { col: '0,229,160',  r: 2.5, label: 'VPN-EXIT',         glow: 8  },
+        { col: '123,97,255', r: 2.5, label: 'TOR-NODE',         glow: 7  },
+        { col: '0,212,255',  r: 2,   label: 'PROXY',            glow: 6  },
+        { col: '0,180,220',  r: 2,   label: 'HONEYPOT',         glow: 5  },
+      ];
+
+      // Place nodes with good spread
+      const placed = [];
+      const positions = [
+        [80,60],[480,50],[160,220],[510,270],[295,155],
+        [60,280],[400,140],[230,300],[530,190],[340,280],
+      ];
+
+      types.forEach((t, i) => {
+        const [px, py] = positions[i];
+        placed.push({ x: px, y: py, ...t });
+      });
+
+      // Edges
+      const MAX_D = 260;
+      placed.forEach((a, i) => {
+        placed.forEach((b, j) => {
+          if (j <= i) return;
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx*dx + dy*dy);
+          if (d < MAX_D) {
+            const alpha = ((1 - d/MAX_D) * 0.2).toFixed(3);
+            eG.appendChild(el('line', { x1: a.x, y1: a.y, x2: b.x, y2: b.y, stroke: 'rgba(0,200,255,' + alpha + ')', 'stroke-width': '0.6' }));
+          }
+        });
+      });
+
+      // Nodes
+      placed.forEach(n => {
+        nG.appendChild(el('circle', { cx: n.x, cy: n.y, r: n.glow, fill: 'rgba(' + n.col + ',0.08)' }));
+        nG.appendChild(el('circle', { cx: n.x, cy: n.y, r: n.r * 1.8, fill: 'rgba(' + n.col + ',0.15)' }));
+        nG.appendChild(el('circle', { cx: n.x, cy: n.y, r: n.r, fill: 'rgba(' + n.col + ',1)' }));
+        const lt = document.createElementNS(ns, 'text');
+        lt.setAttribute('x', n.x + n.r + 5); lt.setAttribute('y', n.y - n.r - 3);
+        lt.setAttribute('font-size', '6'); lt.setAttribute('fill', 'rgba(' + n.col + ',0.35)');
+        lt.textContent = n.label;
+        lG.appendChild(lt);
+      });
+    })();
+
+    // ── OPTION C: LAYERED NETWORK STACK ──
+    (function() {
+      const rng  = makeRng(21);
+      const bndG = document.getElementById('cBands');
+      const eG   = document.getElementById('cEdges');
+      const nG   = document.getElementById('cNodes');
+      const lG   = document.getElementById('cLabels');
+      const W = 600;
+
+      const layers = [
+        { y: 52,  col: '255,120,50',  label: 'INTERNET / UNTRUSTED', count: 5,  nodeLabel: 'HOST'     },
+        { y: 122, col: '0,212,255',   label: 'PERIMETER (FW / IDS)', count: 4,  nodeLabel: 'FIREWALL' },
+        { y: 192, col: '0,229,160',   label: 'DMZ / PROXY',          count: 5,  nodeLabel: 'PROXY'    },
+        { y: 262, col: '123,97,255',  label: 'INTERNAL CORE',        count: 6,  nodeLabel: 'SERVER'   },
+      ];
+
+      const allLayerNodes = [];
+
+      layers.forEach(lay => {
+        // Band background stripe
+        bndG.appendChild(el('rect', { x: 0, y: lay.y - 26, width: W, height: 52, fill: 'rgba(' + lay.col + ',0.025)' }));
+        bndG.appendChild(el('line', { x1: 0, y1: lay.y - 26, x2: W, y2: lay.y - 26, stroke: 'rgba(' + lay.col + ',0.1)', 'stroke-width': '0.6' }));
+
+        // Layer label (left)
+        const lt = document.createElementNS(ns, 'text');
+        lt.setAttribute('x', 10); lt.setAttribute('y', lay.y - 14);
+        lt.setAttribute('font-size', '6'); lt.setAttribute('fill', 'rgba(' + lay.col + ',0.32)');
+        lt.setAttribute('font-family', 'JetBrains Mono, monospace');
+        lt.textContent = '— ' + lay.label;
+        lG.appendChild(lt);
+
+        // Nodes evenly spaced in layer
+        const layNodes = [];
+        for (let i = 0; i < lay.count; i++) {
+          const xBase = 80 + (i / (lay.count - 1)) * (W - 160);
+          const nx = xBase + (rng() - 0.5) * 20;
+          const ny = lay.y + (rng() - 0.5) * 18;
+          layNodes.push({ x: nx, y: ny, col: lay.col, r: 2.2 + rng() * 1.2, label: lay.nodeLabel + '-' + (i + 1) });
+        }
+
+        // Intra-layer edges
+        for (let i = 0; i < layNodes.length - 1; i++) {
+          eG.appendChild(el('line', {
+            x1: layNodes[i].x.toFixed(1), y1: layNodes[i].y.toFixed(1),
+            x2: layNodes[i+1].x.toFixed(1), y2: layNodes[i+1].y.toFixed(1),
+            stroke: 'rgba(' + lay.col + ',0.12)', 'stroke-width': '0.6'
+          }));
+        }
+
+        allLayerNodes.push(layNodes);
+      });
+
+      // Inter-layer edges (vertical connections between layers)
+      for (let li = 0; li < allLayerNodes.length - 1; li++) {
+        const upper = allLayerNodes[li];
+        const lower = allLayerNodes[li + 1];
+        // Connect a few nodes between adjacent layers
+        const pairs = Math.min(upper.length, lower.length, 3) + 1;
+        for (let p = 0; p < pairs; p++) {
+          const ui = Math.floor(rng() * upper.length);
+          const di = Math.floor(rng() * lower.length);
+          const u = upper[ui], d = lower[di];
+          const midCol = li % 2 === 0 ? '0,212,255' : '0,229,160';
+          eG.appendChild(el('line', {
+            x1: u.x.toFixed(1), y1: u.y.toFixed(1),
+            x2: d.x.toFixed(1), y2: d.y.toFixed(1),
+            stroke: 'rgba(' + midCol + ',0.2)', 'stroke-width': '0.8', 'stroke-dasharray': '3 3'
+          }));
+        }
+      }
+
+      // Draw all nodes
+      allLayerNodes.flat().forEach(n => {
+        nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r * 3, fill: 'rgba(' + n.col + ',0.1)' }));
+        nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r, fill: 'rgba(' + n.col + ',0.9)' }));
+      });
+    })();
+
+    // ── OPTION D: DENSE PARTICLE MESH ──
+    (function() {
+      const rng = makeRng(37);
+      const eG  = document.getElementById('dEdges');
+      const nG  = document.getElementById('dNodes');
+      const W = 600, H = 340, N = 100, MAX_D = 95;
+
+      const nodes = [];
+      for (let i = 0; i < N; i++) {
+        const t = rng();
+        nodes.push({
+          x: 10 + rng() * (W - 20),
+          y: 10 + rng() * (H - 20),
+          r: t < 0.06 ? 3.2 : (t < 0.18 ? 1.8 : 1.0),
+          col: t < 0.06 ? '0,212,255' : (t < 0.14 ? '0,229,160' : (t < 0.2 ? '123,97,255' : '0,180,220')),
+        });
+      }
+
+      nodes.forEach((a, i) => {
+        nodes.forEach((b, j) => {
+          if (j <= i) return;
+          const dx = a.x - b.x, dy = a.y - b.y;
+          const d = Math.sqrt(dx*dx + dy*dy);
+          if (d < MAX_D) {
+            const alpha = ((1 - d/MAX_D) * 0.18).toFixed(3);
+            const col = a.col === b.col ? a.col : '0,200,220';
+            eG.appendChild(el('line', { x1: a.x.toFixed(1), y1: a.y.toFixed(1), x2: b.x.toFixed(1), y2: b.y.toFixed(1), stroke: 'rgba(' + col + ',' + alpha + ')', 'stroke-width': '0.5' }));
+          }
+        });
+      });
+
+      nodes.forEach(n => {
+        if (n.r > 1.5) nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r * 4, fill: 'rgba(' + n.col + ',0.08)' }));
+        nG.appendChild(el('circle', { cx: n.x.toFixed(1), cy: n.y.toFixed(1), r: n.r, fill: 'rgba(' + n.col + ',' + (n.r > 2 ? 1 : 0.75) + ')' }));
+      });
+    })();
+  </script>
+</body>
+</html>

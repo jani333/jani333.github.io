@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>More Theme Options — Krish Jani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Courier+Prime:wght@400;700&family=Nunito+Sans:wght@300;400;500&family=Russo+One&family=Anonymous+Pro:wght@400;700&family=Mulish:wght@300;400;500&family=Barlow+Condensed:wght@600;700;800&family=Inconsolata:wght@400;500&family=Karla:wght@300;400;500&family=Share+Tech&family=Share+Tech+Mono&family=Overpass:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #060606; padding: 40px 24px 80px; }
+
+    .page-title { text-align:center; font-family:system-ui; font-size:1rem; font-weight:400; letter-spacing:0.2em; text-transform:uppercase; margin-bottom:10px; color:#888; }
+    .page-sub   { text-align:center; font-family:system-ui; font-size:0.78rem; letter-spacing:0.08em; color:#333; margin-bottom:52px; }
+
+    .options-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; max-width:1280px; margin:0 auto; }
+
+    .option { border-radius:16px; overflow:hidden; position:relative; }
+    .option-label {
+      position:absolute; top:18px; left:22px;
+      font-size:0.63rem; letter-spacing:0.12em; text-transform:uppercase;
+      padding:5px 12px; border-radius:4px; z-index:10;
+    }
+
+    @keyframes blink   { 0%,100%{opacity:1} 50%{opacity:0} }
+    @keyframes pulseE  { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes pulseF  { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes pulseG  { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    @keyframes pulseH  { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+
+    /* ═══════════════════════════════════════════════════
+       OPTION E — CRIMSON RECON
+       BG: #0d0909 · Accent: #f43f5e (rose-red) · Cyan secondary
+       Fonts: Chakra Petch + Courier Prime + Nunito Sans
+    ═══════════════════════════════════════════════════ */
+    .opt-e { background:#0d0909; border:1px solid rgba(244,63,94,0.12); }
+    .opt-e .option-label { font-family:'Courier Prime',monospace; background:rgba(244,63,94,0.1); color:#f43f5e; border:1px solid rgba(244,63,94,0.22); }
+
+    .opt-e .grid-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        linear-gradient(rgba(244,63,94,0.06) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(244,63,94,0.06) 1px,transparent 1px),
+        linear-gradient(rgba(244,63,94,0.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(244,63,94,0.025) 1px,transparent 1px);
+      background-size:80px 80px,80px 80px,20px 20px,20px 20px;
+    }
+    .opt-e .grid-bg::after {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 85% 15%,rgba(244,63,94,0.07) 0%,transparent 50%);
+    }
+
+    .opt-e .hero-content { position:relative; z-index:1; padding:40px 36px; }
+    .opt-e .noc-row {
+      display:flex; align-items:center; gap:8px;
+      font-family:'Courier Prime',monospace; font-size:0.63rem; letter-spacing:0.1em;
+      color:#2e1a1a; margin-bottom:18px;
+    }
+    .opt-e .noc-dot  { width:6px;height:6px;border-radius:50%;background:#06b6d4;animation:pulseE 2s infinite; }
+    .opt-e .noc-live { color:#06b6d4; font-weight:700; }
+    .opt-e .noc-sep  { color:#1a0f0f; }
+
+    .opt-e .name {
+      font-family:'Chakra Petch',sans-serif; font-weight:700;
+      font-size:clamp(3rem,7vw,5.6rem); line-height:0.92; letter-spacing:0.04em; margin-bottom:14px;
+    }
+    .opt-e .name .solid   { display:block; color:#f0e0e0; }
+    .opt-e .name .outline { display:block; color:transparent; -webkit-text-stroke:2px #f43f5e; }
+
+    .opt-e .role { font-family:'Courier Prime',monospace; font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:#f43f5e; margin-bottom:14px; }
+    .opt-e .sub  { font-family:'Nunito Sans',sans-serif; font-size:0.88rem; color:#2e1a1a; max-width:380px; margin-bottom:20px; }
+
+    .opt-e .pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+    .opt-e .pill  { font-family:'Courier Prime',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:4px 11px; border-radius:4px; background:rgba(244,63,94,0.08); border:1px solid rgba(244,63,94,0.2); color:#f43f5e; }
+
+    .opt-e .btns    { display:flex; gap:10px; }
+    .opt-e .btn-main{ font-family:'Courier Prime',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:#f43f5e; color:#080404; font-weight:700; border:none; cursor:default; }
+    .opt-e .btn-out { font-family:'Courier Prime',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:transparent; color:#2e1a1a; border:1px solid #1c0f0f; cursor:default; }
+
+    .opt-e .term { margin-top:26px; background:#080404; border:1px solid rgba(244,63,94,0.14); border-radius:10px; overflow:hidden; }
+    .opt-e .term-bar { background:#0f0606; padding:9px 14px; border-bottom:1px solid rgba(244,63,94,0.09); display:flex; align-items:center; gap:6px; }
+    .opt-e .tdot   { width:9px;height:9px;border-radius:50%; }
+    .opt-e .ttitle { font-family:'Courier Prime',monospace; font-size:0.62rem; color:#221010; margin-left:6px; }
+    .opt-e .term-body { padding:12px 16px; display:flex; flex-direction:column; gap:6px; }
+    .opt-e .tl      { font-family:'Courier Prime',monospace; font-size:0.68rem; color:#220e0e; }
+    .opt-e .tl.ok   { color:#06b6d4; padding-left:10px; }
+    .opt-e .tl.warn { color:#fbbf24; padding-left:10px; }
+    .opt-e .tl.dim  { color:#180a0a; padding-left:10px; }
+    .opt-e .tprompt { color:#f43f5e; font-weight:700; margin-right:6px; }
+    .opt-e .tcursor { display:inline-block;width:6px;height:12px;background:#f43f5e;vertical-align:middle;margin-left:1px;animation:blink 1.1s step-end infinite; }
+
+    .opt-e .font-note { font-family:'Courier Prime',monospace; font-size:0.6rem; letter-spacing:0.08em; color:#220f0f; padding:10px 36px; border-top:1px solid #160909; text-align:right; }
+
+
+    /* ═══════════════════════════════════════════════════
+       OPTION F — VIOLET PHANTOM
+       BG: #0c0a14 · Accent: #a855f7 (violet/purple)
+       Fonts: Russo One + Anonymous Pro + Mulish
+    ═══════════════════════════════════════════════════ */
+    .opt-f { background:#0c0a14; border:1px solid rgba(168,85,247,0.1); }
+    .opt-f .option-label { font-family:'Anonymous Pro',monospace; background:rgba(168,85,247,0.1); color:#a855f7; border:1px solid rgba(168,85,247,0.22); }
+
+    .opt-f .grid-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        linear-gradient(rgba(168,85,247,0.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(168,85,247,0.07) 1px,transparent 1px),
+        linear-gradient(rgba(168,85,247,0.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(168,85,247,0.028) 1px,transparent 1px);
+      background-size:80px 80px,80px 80px,20px 20px,20px 20px;
+    }
+    .opt-f .grid-bg::after {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 15% 85%,rgba(168,85,247,0.06) 0%,transparent 55%),
+                 radial-gradient(ellipse at 85% 20%,rgba(34,211,238,0.04) 0%,transparent 45%);
+    }
+
+    .opt-f .hero-content { position:relative; z-index:1; padding:40px 36px; }
+    .opt-f .noc-row {
+      display:flex; align-items:center; gap:8px;
+      font-family:'Anonymous Pro',monospace; font-size:0.63rem; letter-spacing:0.1em;
+      color:#22183a; margin-bottom:18px;
+    }
+    .opt-f .noc-dot  { width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulseF 2s infinite; }
+    .opt-f .noc-live { color:#34d399; font-weight:700; }
+    .opt-f .noc-sep  { color:#160e28; }
+
+    .opt-f .name {
+      font-family:'Russo One',sans-serif;
+      font-size:clamp(3rem,7vw,5.4rem); line-height:0.95; letter-spacing:0.02em; margin-bottom:14px;
+    }
+    .opt-f .name .solid   { display:block; color:#e0d8f0; }
+    .opt-f .name .outline { display:block; color:transparent; -webkit-text-stroke:2px #a855f7; }
+
+    .opt-f .role { font-family:'Anonymous Pro',monospace; font-size:0.66rem; letter-spacing:0.16em; text-transform:uppercase; color:#a855f7; margin-bottom:14px; }
+    .opt-f .sub  { font-family:'Mulish',sans-serif; font-size:0.88rem; color:#2a1e45; max-width:380px; margin-bottom:20px; }
+
+    .opt-f .pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+    .opt-f .pill  { font-family:'Anonymous Pro',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:4px 11px; border-radius:4px; background:rgba(168,85,247,0.09); border:1px solid rgba(168,85,247,0.22); color:#a855f7; }
+
+    .opt-f .btns    { display:flex; gap:10px; }
+    .opt-f .btn-main{ font-family:'Anonymous Pro',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:#a855f7; color:#060410; font-weight:700; border:none; cursor:default; }
+    .opt-f .btn-out { font-family:'Anonymous Pro',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:transparent; color:#22183a; border:1px solid #160e28; cursor:default; }
+
+    .opt-f .term { margin-top:26px; background:#080612; border:1px solid rgba(168,85,247,0.14); border-radius:10px; overflow:hidden; }
+    .opt-f .term-bar { background:#0e0a1c; padding:9px 14px; border-bottom:1px solid rgba(168,85,247,0.09); display:flex; align-items:center; gap:6px; }
+    .opt-f .tdot   { width:9px;height:9px;border-radius:50%; }
+    .opt-f .ttitle { font-family:'Anonymous Pro',monospace; font-size:0.62rem; color:#1e1430; margin-left:6px; }
+    .opt-f .term-body { padding:12px 16px; display:flex; flex-direction:column; gap:6px; }
+    .opt-f .tl      { font-family:'Anonymous Pro',monospace; font-size:0.68rem; color:#1e1430; }
+    .opt-f .tl.ok   { color:#34d399; padding-left:10px; }
+    .opt-f .tl.warn { color:#fbbf24; padding-left:10px; }
+    .opt-f .tl.dim  { color:#120c22; padding-left:10px; }
+    .opt-f .tprompt { color:#a855f7; font-weight:700; margin-right:6px; }
+    .opt-f .tcursor { display:inline-block;width:6px;height:12px;background:#a855f7;vertical-align:middle;margin-left:1px;animation:blink 1.1s step-end infinite; }
+
+    .opt-f .font-note { font-family:'Anonymous Pro',monospace; font-size:0.6rem; letter-spacing:0.08em; color:#18102e; padding:10px 36px; border-top:1px solid #110c20; text-align:right; }
+
+
+    /* ═══════════════════════════════════════════════════
+       OPTION G — ARCTIC INTEL
+       BG: #080e1c · Accent: #60a5fa (ice blue)
+       Fonts: Barlow Condensed + Inconsolata + Karla
+    ═══════════════════════════════════════════════════ */
+    .opt-g { background:#080e1c; border:1px solid rgba(96,165,250,0.1); }
+    .opt-g .option-label { font-family:'Inconsolata',monospace; background:rgba(96,165,250,0.1); color:#60a5fa; border:1px solid rgba(96,165,250,0.22); }
+
+    .opt-g .grid-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        linear-gradient(rgba(96,165,250,0.07) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(96,165,250,0.07) 1px,transparent 1px),
+        linear-gradient(rgba(96,165,250,0.028) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(96,165,250,0.028) 1px,transparent 1px);
+      background-size:80px 80px,80px 80px,20px 20px,20px 20px;
+    }
+    .opt-g .grid-bg::after {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 80% 10%,rgba(96,165,250,0.05) 0%,transparent 50%);
+    }
+
+    .opt-g .hero-content { position:relative; z-index:1; padding:40px 36px; }
+    .opt-g .noc-row {
+      display:flex; align-items:center; gap:8px;
+      font-family:'Inconsolata',monospace; font-size:0.65rem; letter-spacing:0.1em;
+      color:#0e1a30; margin-bottom:18px;
+    }
+    .opt-g .noc-dot  { width:6px;height:6px;border-radius:50%;background:#34d399;animation:pulseG 2s infinite; }
+    .opt-g .noc-live { color:#34d399; font-weight:700; }
+    .opt-g .noc-sep  { color:#0a1424; }
+
+    .opt-g .name {
+      font-family:'Barlow Condensed',sans-serif; font-weight:800;
+      font-size:clamp(3.5rem,8vw,6.5rem); line-height:0.88; letter-spacing:0.03em; margin-bottom:14px;
+    }
+    .opt-g .name .solid   { display:block; color:#ccd9ed; }
+    .opt-g .name .outline { display:block; color:transparent; -webkit-text-stroke:2px #60a5fa; }
+
+    .opt-g .role { font-family:'Inconsolata',monospace; font-size:0.68rem; letter-spacing:0.16em; text-transform:uppercase; color:#60a5fa; margin-bottom:14px; }
+    .opt-g .sub  { font-family:'Karla',sans-serif; font-size:0.88rem; color:#172035; max-width:380px; margin-bottom:20px; }
+
+    .opt-g .pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+    .opt-g .pill  { font-family:'Inconsolata',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:4px 11px; border-radius:4px; background:rgba(96,165,250,0.08); border:1px solid rgba(96,165,250,0.2); color:#60a5fa; }
+
+    .opt-g .btns    { display:flex; gap:10px; }
+    .opt-g .btn-main{ font-family:'Inconsolata',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:#60a5fa; color:#030810; font-weight:700; border:none; cursor:default; }
+    .opt-g .btn-out { font-family:'Inconsolata',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:transparent; color:#0e1a30; border:1px solid #0a1424; cursor:default; }
+
+    .opt-g .term { margin-top:26px; background:#050910; border:1px solid rgba(96,165,250,0.12); border-radius:10px; overflow:hidden; }
+    .opt-g .term-bar { background:#080d1a; padding:9px 14px; border-bottom:1px solid rgba(96,165,250,0.08); display:flex; align-items:center; gap:6px; }
+    .opt-g .tdot   { width:9px;height:9px;border-radius:50%; }
+    .opt-g .ttitle { font-family:'Inconsolata',monospace; font-size:0.62rem; color:#101a2c; margin-left:6px; }
+    .opt-g .term-body { padding:12px 16px; display:flex; flex-direction:column; gap:6px; }
+    .opt-g .tl      { font-family:'Inconsolata',monospace; font-size:0.68rem; color:#101a2c; }
+    .opt-g .tl.ok   { color:#34d399; padding-left:10px; }
+    .opt-g .tl.warn { color:#fbbf24; padding-left:10px; }
+    .opt-g .tl.dim  { color:#0a1220; padding-left:10px; }
+    .opt-g .tprompt { color:#60a5fa; font-weight:700; margin-right:6px; }
+    .opt-g .tcursor { display:inline-block;width:6px;height:12px;background:#60a5fa;vertical-align:middle;margin-left:1px;animation:blink 1.1s step-end infinite; }
+
+    .opt-g .font-note { font-family:'Inconsolata',monospace; font-size:0.6rem; letter-spacing:0.08em; color:#0c1826; padding:10px 36px; border-top:1px solid #0a1220; text-align:right; }
+
+
+    /* ═══════════════════════════════════════════════════
+       OPTION H — NIGHT VISION
+       BG: #080f08 (pure terminal black-green)
+       Accent: #4ade80 (bright phosphor green — like old CRT monitors)
+       Fonts: Share Tech (display) + Share Tech Mono (mono) + Overpass (body)
+       Vibe: Night ops, classic 80s terminal, purist hacker
+    ═══════════════════════════════════════════════════ */
+    .opt-h { background:#060d06; border:1px solid rgba(74,222,128,0.1); }
+    .opt-h .option-label { font-family:'Share Tech Mono',monospace; background:rgba(74,222,128,0.08); color:#4ade80; border:1px solid rgba(74,222,128,0.2); }
+
+    .opt-h .grid-bg {
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        linear-gradient(rgba(74,222,128,0.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(74,222,128,0.08) 1px,transparent 1px),
+        linear-gradient(rgba(74,222,128,0.032) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(74,222,128,0.032) 1px,transparent 1px);
+      background-size:80px 80px,80px 80px,20px 20px,20px 20px;
+    }
+    .opt-h .grid-bg::after {
+      content:''; position:absolute; inset:0;
+      background:radial-gradient(ellipse at 50% 30%,rgba(74,222,128,0.04) 0%,transparent 60%);
+    }
+
+    .opt-h .hero-content { position:relative; z-index:1; padding:40px 36px; }
+    .opt-h .noc-row {
+      display:flex; align-items:center; gap:8px;
+      font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em;
+      color:#122512; margin-bottom:18px;
+    }
+    .opt-h .noc-dot  { width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulseH 2s infinite; }
+    .opt-h .noc-live { color:#4ade80; font-weight:400; }
+    .opt-h .noc-sep  { color:#0c1a0c; }
+
+    .opt-h .name {
+      font-family:'Share Tech',sans-serif;
+      font-size:clamp(3.2rem,8vw,6.2rem); line-height:0.9; letter-spacing:0.06em; margin-bottom:14px;
+    }
+    .opt-h .name .solid   { display:block; color:#c8f0c8; }
+    .opt-h .name .outline { display:block; color:transparent; -webkit-text-stroke:2px #4ade80; }
+
+    .opt-h .role { font-family:'Share Tech Mono',monospace; font-size:0.66rem; letter-spacing:0.18em; text-transform:uppercase; color:#4ade80; margin-bottom:14px; }
+    .opt-h .sub  { font-family:'Overpass',sans-serif; font-size:0.88rem; color:#1a301a; max-width:380px; margin-bottom:20px; }
+
+    .opt-h .pills { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+    .opt-h .pill  { font-family:'Share Tech Mono',monospace; font-size:0.6rem; letter-spacing:0.06em; padding:4px 11px; border-radius:4px; background:rgba(74,222,128,0.08); border:1px solid rgba(74,222,128,0.2); color:#4ade80; }
+
+    .opt-h .btns    { display:flex; gap:10px; }
+    .opt-h .btn-main{ font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:#4ade80; color:#020d02; font-weight:400; border:none; cursor:default; }
+    .opt-h .btn-out { font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; padding:10px 22px; border-radius:6px; background:transparent; color:#1a301a; border:1px solid #0e200e; cursor:default; }
+
+    .opt-h .term { margin-top:26px; background:#030a03; border:1px solid rgba(74,222,128,0.14); border-radius:10px; overflow:hidden; }
+    .opt-h .term-bar { background:#060f06; padding:9px 14px; border-bottom:1px solid rgba(74,222,128,0.09); display:flex; align-items:center; gap:6px; }
+    .opt-h .tdot   { width:9px;height:9px;border-radius:50%; }
+    .opt-h .ttitle { font-family:'Share Tech Mono',monospace; font-size:0.62rem; color:#122212; margin-left:6px; }
+    .opt-h .term-body { padding:12px 16px; display:flex; flex-direction:column; gap:6px; }
+    .opt-h .tl      { font-family:'Share Tech Mono',monospace; font-size:0.68rem; color:#112011; }
+    .opt-h .tl.ok   { color:#4ade80; padding-left:10px; }
+    .opt-h .tl.warn { color:#fbbf24; padding-left:10px; }
+    .opt-h .tl.dim  { color:#0b180b; padding-left:10px; }
+    .opt-h .tprompt { color:#4ade80; font-weight:400; margin-right:6px; }
+    .opt-h .tcursor { display:inline-block;width:6px;height:12px;background:#4ade80;vertical-align:middle;margin-left:1px;animation:blink 1.1s step-end infinite; }
+
+    .opt-h .font-note { font-family:'Share Tech Mono',monospace; font-size:0.6rem; letter-spacing:0.08em; color:#0e200e; padding:10px 36px; border-top:1px solid #0a180a; text-align:right; }
+
+    @media (max-width:900px) { .options-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">More Color & Font Options</p>
+  <p class="page-sub">Options E – H · Same layout as before, brand new palettes and typefaces</p>
+
+  <div class="options-grid">
+
+    <!-- ══ OPTION E ══ -->
+    <div class="option opt-e">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option E — Crimson Recon</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span><span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span><span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span><span>THREATS: MONITORED</span>
+        </div>
+        <div class="name"><span class="solid">KRISH</span><span class="outline">JANI.</span></div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span><span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span><span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns"><span class="btn-main">See My Work →</span><span class="btn-out">Get in Touch</span></div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Chakra Petch (headings) · Courier Prime (mono) · Nunito Sans (body)</div>
+    </div>
+
+    <!-- ══ OPTION F ══ -->
+    <div class="option opt-f">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option F — Violet Phantom</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span><span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span><span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span><span>THREATS: MONITORED</span>
+        </div>
+        <div class="name"><span class="solid">KRISH</span><span class="outline">JANI.</span></div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span><span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span><span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns"><span class="btn-main">See My Work →</span><span class="btn-out">Get in Touch</span></div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Russo One (headings) · Anonymous Pro (mono) · Mulish (body)</div>
+    </div>
+
+    <!-- ══ OPTION G ══ -->
+    <div class="option opt-g">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option G — Arctic Intel</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span><span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span><span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span><span>THREATS: MONITORED</span>
+        </div>
+        <div class="name"><span class="solid">KRISH</span><span class="outline">JANI.</span></div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span><span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span><span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns"><span class="btn-main">See My Work →</span><span class="btn-out">Get in Touch</span></div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Barlow Condensed (headings) · Inconsolata (mono) · Karla (body)</div>
+    </div>
+
+    <!-- ══ OPTION H ══ -->
+    <div class="option opt-h">
+      <div class="grid-bg"></div>
+      <span class="option-label">Option H — Night Vision</span>
+      <div class="hero-content">
+        <div class="noc-row">
+          <span class="noc-dot"></span><span class="noc-live">NOC READY</span>
+          <span class="noc-sep">|</span><span>SYSTEMS: OPERATIONAL</span>
+          <span class="noc-sep">|</span><span>THREATS: MONITORED</span>
+        </div>
+        <div class="name"><span class="solid">KRISH</span><span class="outline">JANI.</span></div>
+        <p class="role">IT Support & Cybersecurity Professional</p>
+        <p class="sub">Securing networks, solving problems, keeping systems resilient. CompTIA Security+ certified.</p>
+        <div class="pills">
+          <span class="pill">Security+</span><span class="pill">Network+</span>
+          <span class="pill">CompTIA A+</span><span class="pill">Google Cyber</span>
+        </div>
+        <div class="btns"><span class="btn-main">See My Work →</span><span class="btn-out">Get in Touch</span></div>
+        <div class="term">
+          <div class="term-bar">
+            <span class="tdot" style="background:#ff5f56"></span>
+            <span class="tdot" style="background:#ffbd2e"></span>
+            <span class="tdot" style="background:#27c93f"></span>
+            <span class="ttitle">krish@noc-station ~ bash</span>
+          </div>
+          <div class="term-body">
+            <div class="tl"><span class="tprompt">▸</span>nmap -sV 192.168.1.0/24</div>
+            <div class="tl dim">Starting Nmap 7.94 scan...</div>
+            <div class="tl ok">✓ Host 192.168.1.1 — up (0.003s)</div>
+            <div class="tl ok">✓ Host 192.168.1.45 — up (0.007s)</div>
+            <div class="tl warn">⚠ Port 23/tcp open — TELNET detected</div>
+            <div class="tl"><span class="tprompt">▸</span>sudo tcpdump -i eth0<span class="tcursor"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="font-note">Share Tech (headings) · Share Tech Mono (mono) · Overpass (body)</div>
+    </div>
+
+  </div>
+
+</body>
+</html>

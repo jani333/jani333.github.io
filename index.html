@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krish Jani — IT & Cybersecurity</title>
+  <meta name="description" content="Krish Jani — IT & Cybersecurity professional based in Toronto. CompTIA Security+ certified with hands-on experience in vulnerability assessment, networking, and full-stack development."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff; --bg-soft: #f7f7f5; --bg-card: #ffffff;
+      --border: #e8e8e4; --border-2: #d4d4cf;
+      --text: #111110; --text-2: #55554f; --text-3: #99998f;
+      --accent: #0057ff; --accent-bg: #eff4ff; --accent-t: #003db3;
+      --radius: 12px; --nav-h: 64px;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 64px; background: rgba(255,255,255,0.9); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 17px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.4px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--text-2); text-decoration: none; transition: color .18s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 8px; background: var(--accent); color: #fff; text-decoration: none; transition: background .18s; }
+    .nav-cta:hover { background: var(--accent-t); }
+
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
+    section { padding: 96px 0; }
+    .divider { border: none; border-top: 1px solid var(--border); }
+    .section-eyebrow { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .section-h2 { font-size: 34px; font-weight: 700; letter-spacing: -0.6px; line-height: 1.2; margin-bottom: 12px; }
+    .section-sub { font-size: 16px; color: var(--text-2); max-width: 540px; line-height: 1.75; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: var(--nav-h); }
+    .hero-inner { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-bg); color: var(--accent-t); border: 1px solid #c2d3ff; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-bottom: 22px; }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 2s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .hero-text h1 { font-size: 54px; font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 20px; }
+    .hero-text h1 em { font-style: normal; color: var(--accent); }
+    .hero-text p { font-size: 17px; color: var(--text-2); max-width: 480px; line-height: 1.8; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 9px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all .18s; border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-t); }
+    .btn-outline { background: #fff; color: var(--text); border: 1.5px solid var(--border-2); }
+    .btn-outline:hover { border-color: #aaa; background: var(--bg-soft); }
+    .hero-socials { display: flex; gap: 10px; margin-top: 28px; }
+    .social-link { width: 40px; height: 40px; border-radius: 9px; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--text-2); text-decoration: none; font-size: 16px; transition: border-color .18s, color .18s, background .18s; }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); }
+    .hero-card { background: var(--bg-soft); border: 1.5px solid var(--border); border-radius: 20px; overflow: hidden; }
+    .hero-card-img { width: 100%; aspect-ratio: 4/3; display: block; overflow: hidden; }
+    .hero-card-body { padding: 20px 24px; border-top: 1px solid var(--border); }
+    .hero-card-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .hero-card-body p { font-size: 13px; color: var(--text-2); }
+    .hero-card-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+    .pill { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 6px; background: var(--accent-bg); color: var(--accent-t); }
+    .pill-gray { background: #eeeee9; color: var(--text-2); }
+
+    /* ABOUT */
+    #about { background: var(--bg-soft); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; aspect-ratio: 4/5; border-radius: 18px; border: 1.5px solid var(--border); display: block; }
+    .about-badge { position: absolute; bottom: -14px; right: -14px; background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    .about-badge .icon { font-size: 22px; }
+    .about-badge-text p:first-child { font-size: 13px; font-weight: 700; }
+    .about-badge-text p:last-child { font-size: 12px; color: var(--text-2); }
+    .about-text p { color: var(--text-2); margin-bottom: 16px; line-height: 1.85; font-size: 15px; }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+    .stat-box { background: #fff; border: 1.5px solid var(--border); border-radius: 12px; padding: 14px; text-align: center; }
+    .stat-box .num { font-size: 24px; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
+    .stat-box .lbl { font-size: 11px; color: var(--text-2); margin-top: 2px; line-height: 1.4; }
+
+    /* PORTFOLIO */
+    #portfolio { background: var(--bg); }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 48px; }
+    .port-card { background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color .2s, box-shadow .2s, transform .2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+    .port-card:hover { border-color: var(--accent); box-shadow: 0 6px 28px rgba(0,87,255,0.09); transform: translateY(-3px); }
+    .port-img { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 36px; border-bottom: 1px solid var(--border); }
+    .c-blue { background: #eff4ff; color: #2563eb; }
+    .c-orange { background: #fff5f0; color: #c2410c; }
+    .c-teal { background: #f0fdfa; color: #0f766e; }
+    .c-purple { background: #faf5ff; color: #7c3aed; }
+    .port-body { padding: 18px 20px; flex: 1; display: flex; flex-direction: column; }
+    .port-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 7px; }
+    .port-body h3 { font-size: 14px; font-weight: 700; }
+    .port-arrow { color: var(--text-3); font-size: 13px; }
+    .port-body p { font-size: 13px; color: var(--text-2); line-height: 1.65; margin-bottom: 14px; flex: 1; }
+    .port-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-top: auto; }
+    .tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 5px; background: var(--bg-soft); border: 1px solid var(--border); color: var(--text-2); }
+
+    /* SERVICES */
+    #services { background: var(--bg-soft); }
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 48px; }
+    .service-card { background: #fff; border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px; transition: border-color .2s, box-shadow .2s; }
+    .service-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px rgba(0,87,255,0.07); }
+    .service-icon { width: 46px; height: 46px; border-radius: 11px; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; font-size: 19px; color: var(--accent); margin-bottom: 16px; }
+    .service-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+    .service-card p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+
+    /* SKILLS */
+    #skills { background: var(--bg); }
+    .skills-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 72px; margin-top: 48px; }
+    .skill-item { margin-bottom: 20px; }
+    .skill-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+    .skill-name { font-size: 14px; font-weight: 600; }
+    .skill-meta { font-size: 12px; color: var(--text-3); }
+    .skill-meta strong { color: var(--accent); font-weight: 700; }
+    .bar-bg { height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; border: 1px solid var(--border); }
+    .bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+    .skill-sub { font-size: 11px; color: var(--text-3); margin-top: 5px; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--bg-soft); }
+    .exp-tabs { display: flex; border: 1.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 40px; width: fit-content; }
+    .exp-tab { padding: 9px 24px; font-size: 13px; font-weight: 600; color: var(--text-2); cursor: pointer; background: #fff; border: none; border-right: 1.5px solid var(--border); transition: background .15s, color .15s; font-family: 'Inter', sans-serif; }
+    .exp-tab:last-child { border-right: none; }
+    .exp-tab.active { background: var(--accent); color: #fff; }
+    .exp-tab:not(.active):hover { background: var(--bg-soft); }
+    .exp-panels > div { display: none; }
+    .exp-panels > div.active { display: block; }
+    .exp-timeline { display: flex; flex-direction: column; }
+    .exp-item { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-year-col { min-width: 120px; text-align: right; flex-shrink: 0; padding-top: 3px; }
+    .exp-year { font-size: 12px; font-weight: 700; color: var(--accent); line-height: 1.4; }
+    .exp-dot-col { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; padding-top: 4px; }
+    .exp-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2px solid #fff; outline: 2px solid var(--accent); flex-shrink: 0; }
+    .exp-dot.dim { background: var(--border-2); outline-color: var(--border-2); }
+    .exp-line { flex: 1; width: 2px; background: var(--border); min-height: 20px; margin-top: 6px; }
+    .exp-body { flex: 1; }
+    .exp-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .exp-body .org { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 10px; display: block; text-decoration: none; }
+    .exp-body .org:hover { text-decoration: underline; }
+    .exp-body p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+    .cert-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .cert-link:hover { text-decoration: underline; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+    .contact-text p { color: var(--text-2); line-height: 1.85; margin-bottom: 28px; font-size: 15px; }
+    .contact-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .contact-card { background: var(--bg-soft); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .contact-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 16px; }
+    .contact-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--text); transition: color .15s; }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { color: var(--accent); }
+    .ci { width: 36px; height: 36px; border-radius: 8px; background: var(--accent-bg); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--accent); flex-shrink: 0; }
+    .ct p { font-size: 11px; color: var(--text-3); }
+    .ct span { font-size: 13px; font-weight: 600; }
+
+    /* FOOTER */
+    footer { background: var(--bg-soft); border-top: 1px solid var(--border); padding: 28px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; }
+    footer p { font-size: 13px; color: var(--text-3); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--text-3); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── HAMBURGER ── */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .25s; display: block; }
+    .mobile-menu { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--border); padding: 16px 24px; z-index: 199; flex-direction: column; gap: 0; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--text-2); text-decoration: none; padding: 12px 0; border-bottom: 1px solid var(--border); transition: color .15s; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--accent); }
+
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      .wrap { padding: 0 24px; }
+      section { padding: 64px 0; }
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+      .hero-card { display: block; max-width: 320px; }
+      .hero-text h1 { font-size: 38px; }
+      .hero-text p { font-size: 15px; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-wrap { display: block; max-width: 320px; }
+      .about-badge { bottom: -10px; right: -10px; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .skills-cols { grid-template-columns: 1fr; gap: 0; }
+      .exp-year-col { min-width: 80px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .section-h2 { font-size: 26px; }
+    }
+    @media (max-width: 560px) {
+      nav { padding: 0 16px; }
+      .wrap { padding: 0 16px; }
+      section { padding: 52px 0; }
+      .hero-text h1 { font-size: 30px; }
+      .hero-badge { font-size: 11px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-card { max-width: 100%; }
+      .about-img-wrap { max-width: 100%; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .stat-box .num { font-size: 20px; }
+      .exp-item { gap: 12px; }
+      .exp-year-col { min-width: 60px; }
+      .exp-year { font-size: 10px; }
+      .hero-socials { gap: 8px; }
+      .contact-btns { flex-direction: column; }
+      .contact-btns .btn { width: 100%; justify-content: center; }
+      .section-h2 { font-size: 24px; }
+      .exp-tabs { width: 100%; }
+      .exp-tab { flex: 1; padding: 9px 12px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Krish<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-badge"><span class="dot"></span> Open to opportunities · Toronto, ON</div>
+        <h1>IT &amp; <em>Cybersecurity</em><br>Professional</h1>
+        <p>Hi, I'm Krish Jani — CompTIA Security+ certified with hands-on experience in vulnerability assessment, networking, endpoint security, and full-stack development. Passionate about building secure systems and helping organisations stay ahead of threats.</p>
+        <div class="hero-actions">
+          <a href="KrishJani.pdf" class="btn btn-primary" download><i class="fa-solid fa-download"></i> Download Resume</a>
+          <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-envelope"></i> Contact me</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://www.linkedin.com/in/krish1123/" target="_blank" class="social-link" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/jani333" target="_blank" class="social-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="mailto:krishj3508@gmail.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://tryhackme.com" target="_blank" class="social-link" title="TryHackMe"><i class="fa-solid fa-shield-halved"></i></a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="krish-hero.jpeg" class="hero-card-img" style="object-fit:cover; object-position: 25% 75%;" alt="Krish Jani">
+        <div class="hero-card-body">
+          <h3>Krish Jani</h3>
+          <p>IT & Cybersecurity · Toronto, ON</p>
+          <div class="hero-card-tags">
+            <span class="pill">CompTIA Security+</span>
+            <span class="pill">Network Security</span>
+            <span class="pill">OWASP</span>
+            <span class="pill-gray pill">Python</span>
+            <span class="pill-gray pill">Linux</span>
+            <span class="pill-gray pill">Active Directory</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="krish.jpeg" class="about-img" style="object-fit:cover; object-position: center top;" alt="Krish Jani at Seneca College graduation">
+        <div class="about-badge">
+          <span class="icon">🎓</span>
+          <div class="about-badge-text">
+            <p>Advanced Diploma</p>
+            <p>Seneca College · 2024</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-eyebrow">About me</span>
+        <h2 class="section-h2">Security-minded, development-grounded</h2>
+        <p>I'm an IT and cybersecurity professional based in Toronto with a background that bridges software development and information security. I studied Computer Programming & Analysis at Seneca College and have since focused on deepening my security skills through certifications, hands-on labs, and self-directed study.</p>
+        <p>I keep myself sharp through TryHackMe labs, studying Active Directory, GRC frameworks, and endpoint security. My development background — building full-stack applications with Next.js, Node.js, and Docker — gives me a practical understanding of how systems are built and where they break.</p>
+        <div class="about-stats">
+          <div class="stat-box"><div class="num">3</div><div class="lbl">Certifications</div></div>
+          <div class="stat-box"><div class="num">2+</div><div class="lbl">Projects</div></div>
+          <div class="stat-box"><div class="num">2+</div><div class="lbl">Years in Tech</div></div>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="width:fit-content">Let's connect <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="portfolio">
+  <div class="wrap">
+    <span class="section-eyebrow">Portfolio</span>
+    <h2 class="section-h2">Projects</h2>
+    <p class="section-sub">Hands-on work spanning security testing, full-stack development, and ongoing self-directed learning.</p>
+    <div class="portfolio-grid">
+
+      <a href="https://tryhackme.com" target="_blank" class="port-card">
+        <div class="port-img c-orange"><i class="fa-solid fa-bug-slash"></i></div>
+        <div class="port-body">
+          <div class="port-top"><h3>OWASP Top 10 Security Testing</h3><span class="port-arrow">↗</span></div>
+          <p>Conducted hands-on vulnerability assessments using Burp Suite, Wireshark, and Metasploit — mapping findings to OWASP risk categories and producing structured remediation reports.</p>
+          <div class="port-tags"><span class="tag">Burp Suite</span><span class="tag">Wireshark</span><span class="tag">Metasploit</span><span class="tag">OWASP</span></div>
+        </div>
+      </a>
+
+      <a href="#" class="port-card">
+        <div class="port-img c-teal"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="port-body">
+          <div class="port-top"><h3>EasyBlogging — Full-Stack App</h3><span class="port-arrow">↗</span></div>
+          <p>Deployed a containerised web application in an agile team at Seneca College with 100% on-time delivery — focusing on server configuration, infrastructure troubleshooting, and secure development practices.</p>
+          <div class="port-tags"><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">Docker</span><span class="tag">PostgreSQL</span></div>
+        </div>
+      </a>
+
+      <a href="https://tryhackme.com" target="_blank" class="port-card">
+        <div class="port-img c-purple"><i class="fa-solid fa-terminal"></i></div>
+        <div class="port-body">
+          <div class="port-top"><h3>TryHackMe Labs</h3><span class="port-arrow">↗</span></div>
+          <p>Actively completing labs on Active Directory, networking fundamentals, GRC frameworks, endpoint security, and system administration as part of ongoing cybersecurity study.</p>
+          <div class="port-tags"><span class="tag">Active Directory</span><span class="tag">Networking</span><span class="tag">Linux</span><span class="tag">GRC</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="services">
+  <div class="wrap">
+    <span class="section-eyebrow">Services</span>
+    <h2 class="section-h2">What I bring to the table</h2>
+    <p class="section-sub">Disciplines I've trained in and applied through coursework, certifications, and real-world experience.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+        <h3>Network Security & Analysis</h3>
+        <p>Proficient in TCP/IP, DNS, DHCP, LAN/WAN, VPN (Cisco AnyConnect), and packet analysis with Wireshark. Experienced identifying misconfigured services and anomalous traffic patterns across enterprise environments.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>Web Application Security</h3>
+        <p>Hands-on experience identifying and mapping OWASP Top 10 vulnerabilities — including SQL injection, XSS, and broken authentication — using Burp Suite, Metasploit, and structured assessment methodologies.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-id-card"></i></div>
+        <h3>Identity & Endpoint Security</h3>
+        <p>Working knowledge of Active Directory and Azure AD administration, Microsoft 365, endpoint protection, user access controls, and least-privilege principles. Experienced enforcing security protocols in user-facing environments.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+        <h3>Secure Application Development</h3>
+        <p>Full-stack development background (Next.js, Node.js, Docker, PostgreSQL) with an understanding of secure coding practices, server configuration, infrastructure troubleshooting, and technical documentation in agile teams.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="skills">
+  <div class="wrap">
+    <span class="section-eyebrow">Skills</span>
+    <h2 class="section-h2">Technical proficiency</h2>
+    <p class="section-sub">Tools and technologies I work with, with honest self-assessments of where I stand today.</p>
+    <div class="skills-cols">
+      <div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">IT Support & Helpdesk</span><span class="skill-meta"><strong>90%</strong> · Professional</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
+          <p class="skill-sub">L1 support · Hardware/software troubleshooting · SLA management · Ticketing</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Network Security</span><span class="skill-meta"><strong>80%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+          <p class="skill-sub">TCP/IP · DNS · DHCP · Wireshark · VPN · Firewall basics</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Endpoint & Identity Security</span><span class="skill-meta"><strong>80%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
+          <p class="skill-sub">Active Directory · Azure AD · Microsoft 365 · Endpoint protection</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Linux & OS Administration</span><span class="skill-meta"><strong>75%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+          <p class="skill-sub">Linux · Windows 10/11 · macOS · System administration</p>
+        </div>
+      </div>
+      <div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Web Application Security</span><span class="skill-meta"><strong>65%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+          <p class="skill-sub">OWASP Top 10 · Burp Suite · Vulnerability assessment · Metasploit (lab)</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Full-Stack Development</span><span class="skill-meta"><strong>70%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+          <p class="skill-sub">Next.js · Node.js · Docker · PostgreSQL · Git</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Python & Scripting</span><span class="skill-meta"><strong>65%</strong> · Intermediate</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:65%"></div></div>
+          <p class="skill-sub">Python · SQL · Git · Automation scripting</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">GRC & Security Frameworks</span><span class="skill-meta"><strong>60%</strong> · Learning</span></div>
+          <div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div>
+          <p class="skill-sub">NIST · CompTIA Security+ · Risk management fundamentals</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="experience">
+  <div class="wrap">
+    <span class="section-eyebrow">Experience</span>
+    <h2 class="section-h2">Background</h2>
+    <p class="section-sub" style="margin-bottom:36px">Work experience, education, and certifications that shaped my path into IT and cybersecurity.</p>
+
+    <div class="exp-tabs">
+      <button class="exp-tab active" onclick="showTab('work', this)">Work</button>
+      <button class="exp-tab" onclick="showTab('education', this)">Education</button>
+      <button class="exp-tab" onclick="showTab('courses', this)">Certifications</button>
+    </div>
+
+    <div class="exp-panels">
+      <div id="tab-work" class="active">
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">Nov 2025 – Present</p></div>
+            <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+            <div class="exp-body">
+              <h3>Cybersecurity Student & IT Practitioner</h3>
+              <span class="org">Self-Directed</span>
+              <p>Actively pursuing IT and cybersecurity roles while deepening skills through TryHackMe labs and self-directed study in Active Directory, networking, GRC frameworks, endpoint security, and system administration.</p>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">Jan 2022 – Aug 2024</p></div>
+            <div class="exp-dot-col"><div class="exp-dot dim"></div></div>
+            <div class="exp-body">
+              <h3>Application Developer</h3>
+              <span class="org">Seneca College · Toronto, ON</span>
+              <p>Built and deployed a full-stack application (Next.js, Node.js, Docker, PostgreSQL) in an agile team with 100% on-time delivery — gaining hands-on experience in server configuration, network behaviour, secure development practices, and technical documentation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-education">
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">2022 – 2024</p></div>
+            <div class="exp-dot-col"><div class="exp-dot"></div></div>
+            <div class="exp-body">
+              <h3>Advanced Diploma — Computer Programming & Analysis</h3>
+              <span class="org">Seneca College · Toronto, ON</span>
+              <p>Relevant coursework: Network Security, Database Management, Software Engineering, Web Development, Data Structures & Algorithms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-courses">
+        <div class="exp-timeline">
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">Feb 2025</p></div>
+            <div class="exp-dot-col"><div class="exp-dot"></div><div class="exp-line"></div></div>
+            <div class="exp-body">
+              <h3>CompTIA Security+</h3>
+              <span class="org">CompTIA</span>
+              <p>Industry-standard certification validating knowledge of network security, threat management, cryptography, identity management, risk mitigation, and security operations across enterprise environments.</p>
+              <a href="#" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">Oct 2024</p></div>
+            <div class="exp-dot-col"><div class="exp-dot dim"></div><div class="exp-line"></div></div>
+            <div class="exp-body">
+              <h3>Google Cybersecurity Specialization</h3>
+              <span class="org">Google / Coursera</span>
+              <p>8-course professional certificate covering cybersecurity foundations, network security, Linux, SQL, Python automation, and incident response frameworks including NIST.</p>
+              <a href="#" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+          </div>
+          <div class="exp-item">
+            <div class="exp-year-col"><p class="exp-year">Nov 2024</p></div>
+            <div class="exp-dot-col"><div class="exp-dot dim"></div></div>
+            <div class="exp-body">
+              <h3>IBM Generative AI for Cybersecurity</h3>
+              <span class="org">IBM / Coursera</span>
+              <p>Explored applications of generative AI in cybersecurity — including AI-assisted threat detection, security automation, and large language models in security operations workflows.</p>
+              <a href="#" class="cert-link"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <span class="section-eyebrow">Contact</span>
+        <h2 class="section-h2">Let's grab a coffee and talk tech</h2>
+        <p>I'm actively looking for IT support, cybersecurity, or security analyst roles in Toronto. Whether you have an opportunity or just want to connect — I'd love to hear from you.</p>
+        <div class="contact-btns">
+          <a href="mailto:krishj3508@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Send an email</a>
+          <a href="https://www.linkedin.com/in/krish1123/" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <h3>Get in touch</h3>
+        <a href="mailto:krishj3508@gmail.com" class="contact-row">
+          <div class="ci"><i class="fa-solid fa-envelope"></i></div>
+          <div class="ct"><p>Email</p><span>krishj3508@gmail.com</span></div>
+        </a>
+        <a href="https://www.linkedin.com/in/krish1123/" target="_blank" class="contact-row">
+          <div class="ci"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div class="ct"><p>LinkedIn</p><span>linkedin.com/in/krish1123</span></div>
+        </a>
+        <a href="https://github.com/jani333" target="_blank" class="contact-row">
+          <div class="ci"><i class="fa-brands fa-github"></i></div>
+          <div class="ct"><p>GitHub</p><span>github.com/jani333</span></div>
+        </a>
+        <a href="https://tryhackme.com" target="_blank" class="contact-row">
+          <div class="ci"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="ct"><p>TryHackMe</p><span>tryhackme.com/p/krishjani</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <p>© 2025 Krish Jani. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+  document.addEventListener('DOMContentLoaded', () => window.scrollTo(0, 0));
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    if (window.location.hash) history.replaceState(null, '', window.location.pathname);
+  });
+  function showTab(id, btn) {
+    document.querySelectorAll('.exp-panels > div').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+  // Smooth scroll without leaving hash in URL
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', window.location.pathname);
+      }
+    });
+  });
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('mobileMenu');
+    var hamburger = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>
