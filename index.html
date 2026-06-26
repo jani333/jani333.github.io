@@ -182,50 +182,72 @@
     .mobile-menu a:hover { color: var(--accent); }
 
     @media (max-width: 960px) {
-      nav { padding: 0 24px; }
-      .wrap { padding: 0 24px; }
-      section { padding: 64px 0; }
+      nav { padding: 0 20px; }
+      .wrap { padding: 0 20px; }
+      section { padding: 56px 0; }
       .nav-links { display: none; }
       .nav-cta { display: none; }
       .hamburger { display: flex; }
-      .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-      .hero-card { display: block; max-width: 320px; }
-      .hero-text h1 { font-size: 38px; }
-      .hero-text p { font-size: 15px; }
-      .about-grid { grid-template-columns: 1fr; gap: 40px; }
-      .about-img-wrap { display: block; max-width: 320px; }
-      .about-badge { bottom: -10px; right: -10px; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); }
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .services-grid { grid-template-columns: 1fr; }
-      .skills-cols { grid-template-columns: 1fr; gap: 0; }
-      .exp-year-col { min-width: 80px; }
-      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
-      .footer-inner { flex-direction: column; gap: 12px; text-align: center; }
+
+      /* Hero — stack cleanly, hide card, show mini photo */
+      #hero { min-height: auto; padding: 100px 0 52px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 0; }
+      .hero-card { display: none; }
+      .hero-text h1 { font-size: 34px; letter-spacing: -0.8px; margin-bottom: 14px; }
+      .hero-text p { font-size: 15px; margin-bottom: 24px; }
+      .hero-badge { font-size: 11px; margin-bottom: 16px; }
+      .hero-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; }
+      .hero-actions .btn { font-size: 13px; padding: 9px 16px; }
+      .hero-socials { margin-top: 20px; }
+
+      /* About */
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-img-wrap { display: none; }
+      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 10px; }
       .section-h2 { font-size: 26px; }
+
+      /* Portfolio */
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+      /* Services */
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+
+      /* Skills */
+      .skills-cols { grid-template-columns: 1fr; gap: 0; }
+
+      /* Experience */
+      .exp-year-col { min-width: 72px; }
+      .exp-year { font-size: 11px; }
+      .exp-tabs { width: 100%; }
+      .exp-tab { flex: 1; padding: 9px 10px; font-size: 12px; }
+
+      /* Contact */
+      .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+      .contact-btns { flex-direction: row; flex-wrap: wrap; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; gap: 10px; text-align: center; }
     }
-    @media (max-width: 560px) {
+
+    @media (max-width: 480px) {
       nav { padding: 0 16px; }
       .wrap { padding: 0 16px; }
-      section { padding: 52px 0; }
-      .hero-text h1 { font-size: 30px; }
-      .hero-badge { font-size: 11px; }
-      .hero-actions { flex-direction: column; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-      .hero-card { max-width: 100%; }
-      .about-img-wrap { max-width: 100%; }
+      section { padding: 48px 0; }
+      .hero-text h1 { font-size: 28px; }
+      .hero-actions .btn { font-size: 12px; padding: 8px 14px; }
       .portfolio-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .about-stats { gap: 8px; }
       .stat-box .num { font-size: 20px; }
-      .exp-item { gap: 12px; }
-      .exp-year-col { min-width: 60px; }
-      .exp-year { font-size: 10px; }
-      .hero-socials { gap: 8px; }
-      .contact-btns { flex-direction: column; }
+      .stat-box .lbl { font-size: 10px; }
+      .exp-item { gap: 10px; }
+      .exp-year-col { min-width: 56px; }
+      .exp-body h3 { font-size: 14px; }
+      .exp-body p, .exp-body ul li { font-size: 13px; }
       .contact-btns .btn { width: 100%; justify-content: center; }
-      .section-h2 { font-size: 24px; }
-      .exp-tabs { width: 100%; }
-      .exp-tab { flex: 1; padding: 9px 12px; font-size: 12px; }
+      .section-h2 { font-size: 22px; }
+      .section-sub { font-size: 14px; }
+      .service-card { padding: 20px; }
+      .contact-card { padding: 20px; }
     }
   </style>
 </head>
