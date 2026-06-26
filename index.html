@@ -172,6 +172,21 @@
     .footer-links a { font-size: 13px; color: var(--text-3); text-decoration: none; transition: color .15s; }
     .footer-links a:hover { color: var(--text); }
 
+    /* ── MOBILE AVATAR ── */
+    .mobile-avatar { display: none; }
+    @media (max-width: 960px) {
+      .mobile-avatar {
+        display: block;
+        width: 110px; height: 110px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--border);
+        margin-bottom: 20px;
+        flex-shrink: 0;
+      }
+      .mobile-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 25% 75%; }
+    }
+
     /* ── HAMBURGER ── */
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
     .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .25s; display: block; }
@@ -281,6 +296,9 @@
   <div class="wrap">
     <div class="hero-inner">
       <div class="hero-text">
+        <div class="mobile-avatar">
+          <img src="krish-hero.jpeg" alt="Krish Jani">
+        </div>
         <div class="hero-badge"><span class="dot"></span> Open to opportunities · Toronto, ON</div>
         <h1>IT &amp; <em>Cybersecurity</em><br>Professional</h1>
         <p>Hi, I'm Krish Jani — CompTIA Security+ certified with hands-on experience in vulnerability assessment, networking, endpoint security, and full-stack development. Passionate about building secure systems and helping organisations stay ahead of threats.</p>
